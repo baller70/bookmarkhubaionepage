@@ -1,0 +1,22 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model WaitlistEntry {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  source    String?  // Where they signed up from (e.g., "hero", "cta", "footer")
+  userAgent String?  @map("user_agent") // Browser/device info
+  referrer  String?  // Referrer URL
+  ipAddress String?  @map("ip_address") // IP address (for analytics)
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("waitlist_entries")
+}
