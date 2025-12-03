@@ -94,7 +94,7 @@ export function PASSection() {
         </motion.div>
 
         {/* Problem Cards - Interactive with color transition */}
-        <div className="grid gap-6 max-w-5xl mx-auto">
+        <div className="grid gap-6 w-full max-w-5xl mx-auto px-4 sm:px-6 md:px-8">
           {problems.map((problem, i) => {
             const isActive = selectedProblems.includes(i)
             return (
