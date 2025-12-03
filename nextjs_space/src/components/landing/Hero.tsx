@@ -178,8 +178,7 @@ export function Hero() {
                   size="lg"
                   className="h-12 sm:h-14 px-4 sm:px-6 md:px-8 text-sm sm:text-base md:text-lg font-semibold bg-gradient-to-r from-lime-500 via-yellow-400 to-orange-500 hover:from-lime-600 hover:via-yellow-500 hover:to-orange-600 text-white"
                 >
-                  <span className="hidden sm:inline">Join the waiting list right now</span>
-                  <span className="sm:hidden">Join the waiting list</span>
+                  JOIN WAITING LISTS
                   <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
                 </Button>
               </form>
