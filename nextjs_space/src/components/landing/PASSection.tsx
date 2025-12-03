@@ -94,7 +94,7 @@ export function PASSection() {
         </motion.div>
 
         {/* Problem Cards - Interactive with color transition */}
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid gap-6 max-w-5xl mx-auto">
           {problems.map((problem, i) => {
             const isActive = selectedProblems.includes(i)
             return (
@@ -113,25 +113,25 @@ export function PASSection() {
                   }`}
                   onClick={() => toggleProblem(i)}
                 >
-                  <CardContent className="p-8">
-                    <div className="flex items-start gap-5">
+                  <CardContent className="p-6 sm:p-8">
+                    <div className="flex items-start gap-4 sm:gap-5">
                       {/* Icon - ALWAYS RED (stays red even when card is green) */}
                       <div className="relative flex-shrink-0 group">
                         {/* Glow effect */}
-                        <div className="absolute inset-0 w-16 h-16 bg-gradient-to-br from-red-500 to-rose-600 rounded-2xl blur-xl opacity-40" />
+                        <div className="absolute inset-0 w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-red-500 to-rose-600 rounded-2xl blur-xl opacity-40" />
 
                         {/* 3D Icon container - Always red */}
-                        <div className="relative w-16 h-16 rounded-2xl bg-gradient-to-br from-red-400 via-red-500 to-rose-600 flex items-center justify-center shadow-lg shadow-red-500/40">
+                        <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-red-400 via-red-500 to-rose-600 flex items-center justify-center shadow-lg shadow-red-500/40">
                           {/* Inner highlight for 3D effect */}
                           <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/30 via-transparent to-transparent" />
                           {/* Bottom shadow for depth */}
                           <div className="absolute -bottom-1 left-2 right-2 h-2 bg-black/20 rounded-b-2xl blur-sm" />
-                          <problem.icon className="h-8 w-8 text-white relative z-10 drop-shadow-lg" strokeWidth={1.5} />
+                          <problem.icon className="h-7 w-7 sm:h-8 sm:w-8 text-white relative z-10 drop-shadow-lg" strokeWidth={1.5} />
                         </div>
                       </div>
 
-                      <div className="flex-1">
-                        <p className="font-bold text-xl mb-2">{problem.question}</p>
+                      <div className="flex-1 min-w-0">
+                        <p className="font-bold text-lg sm:text-xl mb-2">{problem.question}</p>
                         <AnimatePresence mode="wait">
                           {isActive && (
                             <motion.div
@@ -141,30 +141,30 @@ export function PASSection() {
                               transition={{ duration: 0.3 }}
                             >
                               {/* Problem text - IN RED */}
-                              <div className="mb-4 p-4 rounded-xl bg-red-500/10 border border-red-500/20">
-                                <p className="text-red-600 font-semibold text-base mb-2">
+                              <div className="mb-4 p-5 sm:p-6 rounded-xl bg-red-500/10 border border-red-500/20">
+                                <p className="text-red-600 font-semibold text-base sm:text-lg mb-3">
                                   😤 THE PROBLEM:
                                 </p>
-                                <p className="text-red-500 text-base leading-relaxed">
+                                <p className="text-red-500 text-base sm:text-lg leading-relaxed">
                                   {problem.pain}
                                 </p>
-                                <div className="flex items-baseline gap-2 mt-3 pt-3 border-t border-red-500/20">
-                                  <span className="text-2xl font-bold text-red-600">{problem.stat}</span>
-                                  <span className="text-sm text-red-500/80">{problem.statLabel}</span>
+                                <div className="flex items-baseline gap-2 mt-4 pt-4 border-t border-red-500/20">
+                                  <span className="text-3xl sm:text-4xl font-bold text-red-600">{problem.stat}</span>
+                                  <span className="text-sm sm:text-base text-red-500/80">{problem.statLabel}</span>
                                 </div>
                               </div>
 
                               {/* Solution text - IN GREEN */}
-                              <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20">
-                                <div className="flex items-center gap-2 mb-2">
-                                  <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-400 to-green-600 flex items-center justify-center shadow-md shadow-emerald-500/30">
-                                    <problem.solutionIcon className="h-4 w-4 text-white" strokeWidth={2} />
+                              <div className="p-5 sm:p-6 rounded-xl bg-emerald-500/10 border border-emerald-500/20">
+                                <div className="flex items-center gap-2 sm:gap-3 mb-3">
+                                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-gradient-to-br from-emerald-400 to-green-600 flex items-center justify-center shadow-md shadow-emerald-500/30">
+                                    <problem.solutionIcon className="h-5 w-5 sm:h-6 sm:w-6 text-white" strokeWidth={2} />
                                   </div>
-                                  <p className="text-emerald-600 font-semibold text-base">
+                                  <p className="text-emerald-600 font-semibold text-base sm:text-lg">
                                     ✨ THE SOLUTION:
                                   </p>
                                 </div>
-                                <p className="text-emerald-700 dark:text-emerald-400 text-base leading-relaxed">
+                                <p className="text-emerald-700 dark:text-emerald-400 text-base sm:text-lg leading-relaxed">
                                   {problem.solution}
                                 </p>
                               </div>
