@@ -75,45 +75,46 @@ export function Hero() {
   }, [])
 
   return (
-    <section className="relative overflow-hidden min-h-[90vh] flex items-center">
+    <section className="relative overflow-hidden min-h-[85vh] sm:min-h-[90vh] flex items-center">
       {/* Polka dot pattern background */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,_rgb(0_0_0_/_0.05)_1px,_transparent_0)] bg-[length:24px_24px]" />
 
       {/* Animated gradient orbs */}
       <motion.div
-        className="absolute top-20 left-10 w-72 h-72 bg-lime-500/30 rounded-full blur-[100px]"
+        className="absolute top-20 left-10 w-48 h-48 sm:w-72 sm:h-72 bg-lime-500/30 rounded-full blur-[80px] sm:blur-[100px]"
         animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
         transition={{ duration: 8, repeat: Infinity }}
       />
       <motion.div
-        className="absolute bottom-20 right-10 w-96 h-96 bg-orange-500/30 rounded-full blur-[120px]"
+        className="absolute bottom-20 right-10 w-64 h-64 sm:w-96 sm:h-96 bg-orange-500/30 rounded-full blur-[100px] sm:blur-[120px]"
         animate={{ scale: [1.2, 1, 1.2], opacity: [0.4, 0.2, 0.4] }}
         transition={{ duration: 10, repeat: Infinity }}
       />
 
-      <div className="container relative py-16 md:py-24">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+      <div className="container relative py-12 sm:py-16 md:py-24">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left content */}
-          <div className="flex flex-col gap-8">
+          <div className="flex flex-col gap-6 sm:gap-8">
             {/* Launch badge */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="flex flex-wrap gap-3"
+              className="flex flex-wrap gap-2 sm:gap-3"
             >
-              <Badge className="px-5 py-2.5 text-base font-semibold bg-gradient-to-r from-amber-500/20 to-orange-500/20 text-amber-600 border-amber-500/30 gap-2">
-                <Rocket className="h-5 w-5" strokeWidth={1.5} />
-                Launching Q1 2026
+              <Badge className="px-4 py-2 sm:px-5 sm:py-2.5 text-sm sm:text-base font-semibold bg-gradient-to-r from-amber-500/20 to-orange-500/20 text-amber-600 border-amber-500/30 gap-2">
+                <Rocket className="h-4 w-4 sm:h-5 sm:w-5" strokeWidth={1.5} />
+                <span className="hidden xs:inline">Launching Q1 2026</span>
+                <span className="xs:hidden">Q1 2026</span>
               </Badge>
-              <Badge variant="outline" className="px-5 py-2.5 text-base font-bold gap-2 border-2 border-lime-500/50 bg-lime-500/5">
-                <Brain className="h-5 w-5 text-lime-600" strokeWidth={1.5} />
+              <Badge variant="outline" className="px-4 py-2 sm:px-5 sm:py-2.5 text-sm sm:text-base font-bold gap-2 border-2 border-lime-500/50 bg-lime-500/5">
+                <Brain className="h-4 w-4 sm:h-5 sm:w-5 text-lime-600" strokeWidth={1.5} />
                 AI-Powered
               </Badge>
             </motion.div>
 
-            {/* Main headline */}
+            {/* Main headline - MOBILE OPTIMIZED */}
             <motion.h1
-              className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.05]"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1]"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
@@ -125,9 +126,9 @@ export function Hero() {
               <span className="block text-foreground">for the <span className="bg-gradient-to-r from-orange-500 via-yellow-400 to-lime-500 bg-clip-text text-transparent">AI Era</span></span>
             </motion.h1>
 
-            {/* Subheadline */}
+            {/* Subheadline - MOBILE OPTIMIZED */}
             <motion.p
-              className="text-xl md:text-2xl text-muted-foreground max-w-xl leading-relaxed"
+              className="text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-xl leading-relaxed"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
@@ -138,20 +139,20 @@ export function Hero() {
 
             {/* Platform badges */}
             <motion.div
-              className="flex flex-wrap gap-3"
+              className="flex flex-wrap gap-2 sm:gap-3"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
             >
               {platforms.map((platform, i) => (
-                <Badge key={i} className="px-5 py-2.5 gap-2 text-base bg-black text-white border-black">
-                  <platform.icon className="h-5 w-5 text-white" strokeWidth={1.5} />
+                <Badge key={i} className="px-4 py-2 sm:px-5 sm:py-2.5 gap-2 text-sm sm:text-base bg-black text-white border-black">
+                  <platform.icon className="h-4 w-4 sm:h-5 sm:w-5 text-white" strokeWidth={1.5} />
                   {platform.label}
                 </Badge>
               ))}
             </motion.div>
 
-            {/* Waitlist CTA - Simplified */}
+            {/* Waitlist CTA - MOBILE OPTIMIZED */}
             <motion.div
               className="mt-2"
               initial={{ opacity: 0, y: 20 }}
@@ -159,7 +160,7 @@ export function Hero() {
               transition={{ delay: 0.6 }}
             >
               <form 
-                className="flex flex-col sm:flex-row gap-4 max-w-lg"
+                className="flex flex-col sm:flex-row gap-3 sm:gap-4 max-w-lg"
                 onSubmit={(e) => {
                   e.preventDefault()
                   setIsModalOpen(true)
@@ -170,18 +171,19 @@ export function Hero() {
                   placeholder="Enter your email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="flex-1 h-14 px-6 rounded-xl border-2 border-border bg-background text-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
+                  className="flex-1 h-12 sm:h-14 px-4 sm:px-6 rounded-xl border-2 border-border bg-background text-base sm:text-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
                 />
                 <Button
                   type="submit"
                   size="lg"
-                  className="h-14 px-8 text-lg font-semibold bg-gradient-to-r from-lime-500 via-yellow-400 to-orange-500 hover:from-lime-600 hover:via-yellow-500 hover:to-orange-600 text-white"
+                  className="h-12 sm:h-14 px-6 sm:px-8 text-base sm:text-lg font-semibold bg-gradient-to-r from-lime-500 via-yellow-400 to-orange-500 hover:from-lime-600 hover:via-yellow-500 hover:to-orange-600 text-white"
                 >
-                  Join Waitlist
-                  <ArrowRight className="ml-2 h-5 w-5" />
+                  <span className="hidden xs:inline">Join Waitlist</span>
+                  <span className="xs:hidden">Join</span>
+                  <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
                 </Button>
               </form>
-              <p className="mt-4 text-base text-muted-foreground flex items-center gap-4">
+              <p className="mt-3 sm:mt-4 text-sm sm:text-base text-muted-foreground flex flex-wrap items-center gap-2 sm:gap-4">
                 <span className="flex items-center gap-2">
                   <Sparkles className="h-4 w-4 text-lime-500" />
                   <span className="font-semibold text-foreground">{waitlistPosition - 1}</span> people on waitlist
@@ -277,62 +279,68 @@ export function Hero() {
           </motion.div>
         </div>
 
-        {/* Dashboard preview below with premium annotations */}
+        {/* Dashboard preview below with premium annotations - MOBILE OPTIMIZED */}
         <motion.div
-          className="mt-24 relative px-4 md:px-24 lg:px-32"
+          className="mt-16 sm:mt-20 md:mt-24 relative px-2 sm:px-4 md:px-12 lg:px-24 xl:px-32"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1, duration: 0.8 }}
         >
-          {/* Floating icons around the screenshot */}
-          <FloatingIcon icon={TrendingUp} position="-top-8 left-8 md:left-4" color="from-green-500/30 to-emerald-500/30" delay={1.2} size="lg" />
-          <FloatingIcon icon={PieChart} position="-top-6 right-12 md:right-8" color="from-yellow-400/30 to-orange-500/30" delay={1.4} size="lg" />
-          <FloatingIcon icon={Clock} position="top-1/3 -left-4 md:-left-10" color="from-blue-500/30 to-cyan-500/30" delay={1.6} size="lg" />
-          <FloatingIcon icon={Zap} position="top-1/2 -right-4 md:-right-10" color="from-amber-500/30 to-orange-500/30" delay={1.8} size="lg" />
+          {/* Floating icons around the screenshot - HIDDEN ON MOBILE */}
+          <div className="hidden md:block">
+            <FloatingIcon icon={TrendingUp} position="-top-8 left-8 md:left-4" color="from-green-500/30 to-emerald-500/30" delay={1.2} size="lg" />
+            <FloatingIcon icon={PieChart} position="-top-6 right-12 md:right-8" color="from-yellow-400/30 to-orange-500/30" delay={1.4} size="lg" />
+            <FloatingIcon icon={Clock} position="top-1/3 -left-4 md:-left-10" color="from-blue-500/30 to-cyan-500/30" delay={1.6} size="lg" />
+            <FloatingIcon icon={Zap} position="top-1/2 -right-4 md:-right-10" color="from-amber-500/30 to-orange-500/30" delay={1.8} size="lg" />
+          </div>
 
-          {/* PROMINENT Callout badges - XL size for hero */}
-          <CalloutBadge
-            icon={BarChart3}
-            label="Real-Time Analytics"
-            sublabel="Track every click & visit"
-            position="top-left"
-            color="from-lime-500 via-yellow-400 to-orange-500"
-            delay={1.3}
-            arrowDirection="right"
-            size="xl"
-          />
-          <CalloutBadge
-            icon={Brain}
-            label="AI-Powered Insights"
-            sublabel="Smart recommendations"
-            position="top-right"
-            color="from-blue-500 to-cyan-500"
-            delay={1.5}
-            arrowDirection="left"
-            size="xl"
-          />
-          <CalloutBadge
-            icon={Sparkles}
-            label="One-Click Save"
-            sublabel="From any website"
-            position="bottom-left"
-            color="from-green-500 to-emerald-500"
-            delay={1.7}
-            arrowDirection="right"
-            size="lg"
-          />
+          {/* PROMINENT Callout badges - MOBILE OPTIMIZED */}
+          <div className="hidden sm:block">
+            <CalloutBadge
+              icon={BarChart3}
+              label="Real-Time Analytics"
+              sublabel="Track every click & visit"
+              position="top-left"
+              color="from-lime-500 via-yellow-400 to-orange-500"
+              delay={1.3}
+              arrowDirection="right"
+              size="xl"
+            />
+            <CalloutBadge
+              icon={Brain}
+              label="AI-Powered Insights"
+              sublabel="Smart recommendations"
+              position="top-right"
+              color="from-blue-500 to-cyan-500"
+              delay={1.5}
+              arrowDirection="left"
+              size="xl"
+            />
+            <CalloutBadge
+              icon={Sparkles}
+              label="One-Click Save"
+              sublabel="From any website"
+              position="bottom-left"
+              color="from-green-500 to-emerald-500"
+              delay={1.7}
+              arrowDirection="right"
+              size="lg"
+            />
+          </div>
 
-          {/* Stat badge - larger */}
-          <StatBadge
-            value="12+"
-            label="Metrics tracked"
-            position="-bottom-8 right-12 md:right-20"
-            color="from-green-500 to-emerald-500"
-            delay={1.9}
-          />
+          {/* Stat badge - MOBILE OPTIMIZED */}
+          <div className="hidden sm:block">
+            <StatBadge
+              value="12+"
+              label="Metrics tracked"
+              position="-bottom-8 right-12 md:right-20"
+              color="from-green-500 to-emerald-500"
+              delay={1.9}
+            />
+          </div>
 
-          <div className="absolute -inset-6 bg-gradient-to-r from-lime-500/25 via-yellow-400/25 to-orange-500/25 rounded-3xl blur-3xl" />
-          <AnimatedScreenshot className="shadow-2xl">
+          <div className="absolute -inset-4 sm:-inset-6 bg-gradient-to-r from-lime-500/25 via-yellow-400/25 to-orange-500/25 rounded-2xl sm:rounded-3xl blur-2xl sm:blur-3xl" />
+          <AnimatedScreenshot className="shadow-xl sm:shadow-2xl">
             <img src={analyticsImg} alt="Bookmark AI Hub Analytics Dashboard" className="w-full h-auto" />
           </AnimatedScreenshot>
         </motion.div>
@@ -347,4 +355,3 @@ export function Hero() {
     </section>
   )
 }
-

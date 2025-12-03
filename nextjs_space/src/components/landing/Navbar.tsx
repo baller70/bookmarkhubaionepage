@@ -45,7 +45,7 @@ export function Navbar() {
       {/* Premium top accent bar */}
       <div className="h-0.5 w-full bg-gradient-to-r from-lime-500 via-yellow-400 to-orange-500" />
 
-      <div className="container flex h-18 py-4 items-center justify-between">
+      <div className="container flex min-h-[60px] sm:min-h-[72px] py-3 sm:py-4 items-center justify-between">
         {/* Logo */}
         <motion.a
           href="/"
@@ -63,7 +63,7 @@ export function Navbar() {
               <motion.a
                 key={index}
                 href={link.href}
-                className={`relative px-5 py-2.5 text-sm font-semibold rounded-full transition-all duration-200 ${
+                className={`relative px-4 lg:px-5 py-2.5 text-xs lg:text-sm font-semibold rounded-full transition-all duration-200 ${
                   activeLink === link.href
                     ? "text-primary-foreground"
                     : "text-muted-foreground hover:text-foreground"
@@ -87,30 +87,32 @@ export function Navbar() {
         </div>
 
         {/* Desktop CTA - Premium design */}
-        <div className="hidden md:flex items-center gap-4">
+        <div className="hidden md:flex items-center gap-3 lg:gap-4">
           <Badge
             variant="outline"
-            className="px-4 py-2 text-xs font-semibold border-amber-500/30 bg-amber-500/10 text-amber-600 gap-2"
+            className="px-3 lg:px-4 py-1.5 lg:py-2 text-xs font-semibold border-amber-500/30 bg-amber-500/10 text-amber-600 gap-1.5 lg:gap-2"
           >
-            <Rocket className="h-3.5 w-3.5" />
-            Q1 2026
+            <Rocket className="h-3 w-3 lg:h-3.5 lg:w-3.5" />
+            <span className="hidden lg:inline">Q1 2026</span>
+            <span className="lg:hidden">2026</span>
           </Badge>
           <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
             <Button
               onClick={() => setIsModalOpen(true)}
-              className="relative overflow-hidden bg-gradient-to-r from-lime-500 via-yellow-400 to-orange-500 hover:from-lime-600 hover:via-yellow-500 hover:to-orange-600 shadow-lg shadow-lime-500/25 px-6 py-5 text-sm font-semibold group text-white"
+              className="relative overflow-hidden bg-gradient-to-r from-lime-500 via-yellow-400 to-orange-500 hover:from-lime-600 hover:via-yellow-500 hover:to-orange-600 shadow-lg shadow-lime-500/25 px-4 lg:px-6 py-4 lg:py-5 text-xs lg:text-sm font-semibold group text-white"
             >
               <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
-              <Sparkles className="h-4 w-4 mr-2" />
-              Join Waitlist #{WAITLIST_POSITION}
-              <ChevronRight className="h-4 w-4 ml-1 group-hover:translate-x-0.5 transition-transform" />
+              <Sparkles className="h-3 w-3 lg:h-4 lg:w-4 mr-1.5 lg:mr-2" />
+              <span className="hidden sm:inline">Join Waitlist #{WAITLIST_POSITION}</span>
+              <span className="sm:hidden">Join #{WAITLIST_POSITION}</span>
+              <ChevronRight className="h-3 w-3 lg:h-4 lg:w-4 ml-1 group-hover:translate-x-0.5 transition-transform" />
             </Button>
           </motion.div>
         </div>
 
         {/* Mobile Menu Button - Enhanced */}
         <motion.button
-          className="md:hidden p-3 rounded-xl border border-border/50 bg-muted/50 backdrop-blur-sm"
+          className="md:hidden p-2.5 sm:p-3 rounded-xl border border-border/50 bg-muted/50 backdrop-blur-sm"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
@@ -151,12 +153,12 @@ export function Navbar() {
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.2 }}
           >
-            <div className="container py-6 space-y-2">
+            <div className="container py-4 sm:py-6 space-y-2">
               {navLinks.map((link, index) => (
                 <motion.a
                   key={index}
                   href={link.href}
-                  className="flex items-center justify-between p-4 rounded-xl text-base font-semibold text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-all group"
+                  className="flex items-center justify-between p-3 sm:p-4 rounded-xl text-sm sm:text-base font-semibold text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-all group"
                   onClick={() => setMobileMenuOpen(false)}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -166,14 +168,14 @@ export function Navbar() {
                   <ChevronRight className="h-4 w-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
                 </motion.a>
               ))}
-              <div className="pt-4 mt-4 border-t border-border/50">
+              <div className="pt-3 sm:pt-4 mt-3 sm:mt-4 border-t border-border/50">
                 <Button
                   onClick={() => { setMobileMenuOpen(false); setIsModalOpen(true) }}
-                  className="w-full bg-gradient-to-r from-lime-500 via-yellow-400 to-orange-500 py-6 text-base font-semibold text-white"
+                  className="w-full bg-gradient-to-r from-lime-500 via-yellow-400 to-orange-500 py-5 sm:py-6 text-sm sm:text-base font-semibold text-white"
                 >
-                  <Sparkles className="h-5 w-5 mr-2" />
+                  <Sparkles className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
                   Join Waitlist #{WAITLIST_POSITION}
-                  <ChevronRight className="h-5 w-5 ml-2" />
+                  <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5 ml-2" />
                 </Button>
               </div>
             </div>
@@ -190,4 +192,3 @@ export function Navbar() {
     </motion.nav>
   )
 }
-

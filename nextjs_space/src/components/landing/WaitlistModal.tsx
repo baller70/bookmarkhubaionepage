@@ -72,70 +72,71 @@ export function WaitlistModal({ isOpen, onClose, nextPosition }: WaitlistModalPr
             onClick={onClose}
           />
           
-          {/* Modal */}
+          {/* Modal - MOBILE OPTIMIZED */}
           <motion.div
-            className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-full max-w-md"
+            className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-[calc(100%-2rem)] sm:w-full max-w-md mx-auto"
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
           >
-            <div className="bg-background rounded-2xl border-2 border-border shadow-2xl overflow-hidden">
+            <div className="bg-background rounded-xl sm:rounded-2xl border-2 border-border shadow-2xl overflow-hidden">
               {/* Header gradient bar */}
               <div className="h-1.5 bg-gradient-to-r from-lime-500 via-yellow-400 to-orange-500" />
               
-              <div className="p-6">
+              <div className="p-4 sm:p-6">
                 {/* Close button */}
                 <button
                   onClick={onClose}
-                  className="absolute top-4 right-4 p-2 rounded-full hover:bg-muted transition-colors"
+                  className="absolute top-3 right-3 sm:top-4 sm:right-4 p-2 rounded-full hover:bg-muted transition-colors"
+                  aria-label="Close modal"
                 >
-                  <X className="h-5 w-5 text-muted-foreground" />
+                  <X className="h-4 w-4 sm:h-5 sm:w-5 text-muted-foreground" />
                 </button>
 
                 {isSubmitted ? (
-                  <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-4">
+                  <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-2 sm:py-4">
                     <motion.div
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
-                      className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4"
+                      className="w-12 h-12 sm:w-16 sm:h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4"
                     >
-                      <Check className="h-8 w-8 text-white" />
+                      <Check className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
                     </motion.div>
-                    <h3 className="text-2xl font-bold mb-2">You're on the list! 🎉</h3>
-                    <p className="text-muted-foreground mb-4">
+                    <h3 className="text-xl sm:text-2xl font-bold mb-2">You're on the list! 🎉</h3>
+                    <p className="text-sm sm:text-base text-muted-foreground mb-4">
                       You're <span className="font-bold text-foreground">#{position}</span> on the waitlist.
                     </p>
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-lime-500/20 to-orange-500/20 border border-lime-500/30">
-                      <Gift className="h-4 w-4 text-lime-600" />
-                      <span className="text-sm font-medium">Early Bird: Pro FREE for 6 months</span>
+                    <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-gradient-to-r from-lime-500/20 to-orange-500/20 border border-lime-500/30">
+                      <Gift className="h-3 w-3 sm:h-4 sm:w-4 text-lime-600" />
+                      <span className="text-xs sm:text-sm font-medium">Early Bird: Pro FREE for 6 months</span>
                     </div>
                   </motion.div>
                 ) : (
                   <>
-                    <div className="text-center mb-6">
-                      <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-lime-500/10 border border-lime-500/20 mb-4">
-                        <Users className="h-4 w-4 text-lime-600" />
-                        <span className="text-sm font-medium">Position #{nextPosition} available</span>
+                    <div className="text-center mb-4 sm:mb-6">
+                      <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-lime-500/10 border border-lime-500/20 mb-3 sm:mb-4">
+                        <Users className="h-3 w-3 sm:h-4 sm:w-4 text-lime-600" />
+                        <span className="text-xs sm:text-sm font-medium">Position #{nextPosition} available</span>
                       </div>
-                      <h2 className="text-2xl font-bold mb-2">Join the Waitlist</h2>
-                      <p className="text-muted-foreground">Be among the first to experience Bookmark AI Hub</p>
+                      <h2 className="text-xl sm:text-2xl font-bold mb-2">Join the Waitlist</h2>
+                      <p className="text-sm sm:text-base text-muted-foreground">Be among the first to experience Bookmark AI Hub</p>
                     </div>
 
                     {error && (
-                      <div className="flex items-center gap-2 p-3 mb-4 bg-red-500/10 border border-red-500/20 rounded-lg text-red-600 text-sm">
-                        <AlertCircle className="h-4 w-4" />
+                      <div className="flex items-center gap-2 p-2.5 sm:p-3 mb-3 sm:mb-4 bg-red-500/10 border border-red-500/20 rounded-lg text-red-600 text-xs sm:text-sm">
+                        <AlertCircle className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0" />
                         <span>{error}</span>
                       </div>
                     )}
 
-                    <form onSubmit={handleSubmit} className="space-y-4">
+                    <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
                       <input
                         type="text"
                         placeholder="Your name"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         required
-                        className="w-full h-12 px-4 rounded-xl border bg-background focus:outline-none focus:ring-2 focus:ring-lime-500"
+                        className="w-full h-10 sm:h-12 px-3 sm:px-4 rounded-lg sm:rounded-xl border bg-background text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-lime-500"
                       />
                       <input
                         type="email"
@@ -143,17 +144,17 @@ export function WaitlistModal({ isOpen, onClose, nextPosition }: WaitlistModalPr
                         value={email}
                         onChange={(e) => { setEmail(e.target.value); setError(null) }}
                         required
-                        className="w-full h-12 px-4 rounded-xl border bg-background focus:outline-none focus:ring-2 focus:ring-lime-500"
+                        className="w-full h-10 sm:h-12 px-3 sm:px-4 rounded-lg sm:rounded-xl border bg-background text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-lime-500"
                       />
                       <Button
                         type="submit"
                         disabled={isLoading}
-                        className="w-full h-12 bg-gradient-to-r from-lime-500 via-yellow-400 to-orange-500 hover:from-lime-600 hover:via-yellow-500 hover:to-orange-600 text-white font-semibold"
+                        className="w-full h-10 sm:h-12 bg-gradient-to-r from-lime-500 via-yellow-400 to-orange-500 hover:from-lime-600 hover:via-yellow-500 hover:to-orange-600 text-white font-semibold text-sm sm:text-base"
                       >
                         {isLoading ? "Joining..." : <>
-                          <Sparkles className="h-4 w-4 mr-2" />
+                          <Sparkles className="h-3 w-3 sm:h-4 sm:w-4 mr-2" />
                           Join as #{nextPosition}
-                          <ArrowRight className="h-4 w-4 ml-2" />
+                          <ArrowRight className="h-3 w-3 sm:h-4 sm:w-4 ml-2" />
                         </>}
                       </Button>
                     </form>
@@ -167,4 +168,3 @@ export function WaitlistModal({ isOpen, onClose, nextPosition }: WaitlistModalPr
     </AnimatePresence>
   )
 }
-

@@ -102,50 +102,50 @@ const socialLinks = [
 export function Footer() {
   return (
     <footer className="relative overflow-hidden">
-      {/* Premium Social Media Section */}
+      {/* Premium Social Media Section - MOBILE OPTIMIZED */}
       <div className="relative bg-gradient-to-b from-background to-muted/50">
         {/* Decorative elements */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-lime-500/5 via-transparent to-transparent" />
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
 
-        <div className="container py-20 relative">
+        <div className="container py-12 sm:py-16 md:py-20 relative">
           <motion.div
             className="max-w-4xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            {/* Section header */}
-            <div className="text-center mb-12">
+            {/* Section header - MOBILE OPTIMIZED */}
+            <div className="text-center mb-8 sm:mb-12 px-4">
               <motion.div
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-lime-500/10 border border-lime-500/20 mb-6"
+                className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-lime-500/10 border border-lime-500/20 mb-4 sm:mb-6"
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
               >
                 <div className="w-2 h-2 rounded-full bg-lime-500 animate-pulse" />
-                <span className="text-sm font-semibold text-lime-600 uppercase tracking-wider">Stay Connected</span>
+                <span className="text-xs sm:text-sm font-semibold text-lime-600 uppercase tracking-wider">Stay Connected</span>
               </motion.div>
-              <h3 className="text-3xl md:text-4xl font-black mb-4 tracking-tight">
+              <h3 className="text-2xl sm:text-3xl md:text-4xl font-black mb-3 sm:mb-4 tracking-tight">
                 Follow Our{" "}
                 <span className="bg-gradient-to-r from-lime-500 via-yellow-400 to-orange-500 bg-clip-text text-transparent">
                   Journey
                 </span>
               </h3>
-              <p className="text-lg text-muted-foreground max-w-xl mx-auto">
+              <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-xl mx-auto">
                 Join our growing community. Get exclusive updates, sneak peeks, and be the first to know when we launch.
               </p>
             </div>
 
-            {/* Premium social cards grid - 5 cards */}
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+            {/* Premium social cards grid - MOBILE OPTIMIZED: 2 cols mobile, 3 cols tablet, 5 cols desktop */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 sm:gap-4">
               {socialLinks.map((link, index) => (
                 <motion.a
                   key={index}
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative overflow-hidden rounded-2xl bg-background border-2 border-border/50 hover:border-transparent transition-all duration-300"
+                  className="group relative overflow-hidden rounded-xl sm:rounded-2xl bg-background border-2 border-border/50 hover:border-transparent transition-all duration-300"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -156,30 +156,30 @@ export function Footer() {
                   <div className={`absolute inset-0 bg-gradient-to-br ${link.bgGradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
 
                   {/* Card content */}
-                  <div className="relative p-5 flex flex-col items-center text-center">
+                  <div className="relative p-3 sm:p-4 md:p-5 flex flex-col items-center text-center">
                     {/* Official brand logo */}
-                    <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${link.bgGradient} flex items-center justify-center mb-4 shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-300`}>
+                    <div className={`w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-xl sm:rounded-2xl bg-gradient-to-br ${link.bgGradient} flex items-center justify-center mb-2 sm:mb-3 md:mb-4 shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-300`}>
                       <div className="text-white">
                         <link.Logo />
                       </div>
                     </div>
 
                     {/* Platform name */}
-                    <div className="font-bold text-lg mb-0.5 group-hover:text-white transition-colors">{link.label}</div>
-                    <div className="text-sm text-muted-foreground mb-3 group-hover:text-white/80 transition-colors">{link.handle}</div>
+                    <div className="font-bold text-sm sm:text-base md:text-lg mb-0.5 group-hover:text-white transition-colors">{link.label}</div>
+                    <div className="text-xs sm:text-sm text-muted-foreground mb-2 sm:mb-3 group-hover:text-white/80 transition-colors truncate w-full px-1">{link.handle}</div>
 
                     {/* Followers count */}
                     <div className="flex items-center gap-1.5">
-                      <span className="text-sm font-bold text-foreground group-hover:text-white transition-colors">
+                      <span className="text-xs sm:text-sm font-bold text-foreground group-hover:text-white transition-colors">
                         {link.followers}
                       </span>
-                      <span className="text-xs text-muted-foreground group-hover:text-white/70 transition-colors">
+                      <span className="text-[10px] sm:text-xs text-muted-foreground group-hover:text-white/70 transition-colors">
                         followers
                       </span>
                     </div>
 
                     {/* External link indicator */}
-                    <ExternalLink className="absolute top-3 right-3 h-4 w-4 text-muted-foreground/50 opacity-0 group-hover:opacity-100 group-hover:text-white/70 transition-all" />
+                    <ExternalLink className="absolute top-2 right-2 sm:top-3 sm:right-3 h-3 w-3 sm:h-4 sm:w-4 text-muted-foreground/50 opacity-0 group-hover:opacity-100 group-hover:text-white/70 transition-all" />
                   </div>
                 </motion.a>
               ))}
@@ -187,7 +187,7 @@ export function Footer() {
 
             {/* Call to action */}
             <motion.p
-              className="text-center text-muted-foreground mt-8 text-sm"
+              className="text-center text-muted-foreground mt-6 sm:mt-8 text-xs sm:text-sm px-4"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
@@ -199,45 +199,45 @@ export function Footer() {
         </div>
       </div>
 
-      {/* Main Footer - Premium Design */}
+      {/* Main Footer - Premium Design - MOBILE OPTIMIZED */}
       <div className="bg-muted/30 border-t border-border/50">
-        <div className="container py-16">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
+        <div className="container py-12 sm:py-16">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
             {/* Brand Column - Larger */}
-            <div className="md:col-span-5">
-              <Logo size="md" className="mb-6" />
-              <p className="text-muted-foreground text-base mb-8 max-w-md leading-relaxed">
+            <div className="lg:col-span-5">
+              <Logo size="md" className="mb-4 sm:mb-6" />
+              <p className="text-muted-foreground text-sm sm:text-base mb-6 sm:mb-8 max-w-md leading-relaxed">
                 The AI-powered bookmark manager that transforms how you save, organize, and rediscover your digital content. Built for the future of knowledge management.
               </p>
 
-              {/* Email CTA */}
-              <div className="flex flex-col sm:flex-row gap-3">
+              {/* Email CTA - MOBILE OPTIMIZED */}
+              <div className="flex flex-col xs:flex-row gap-3">
                 <a
                   href="mailto:hello@bookmarkaihub.ai"
-                  className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-lime-500/10 border border-lime-500/20 text-lime-600 font-semibold hover:bg-lime-500/20 transition-colors group"
+                  className="inline-flex items-center justify-center gap-2 px-4 sm:px-5 py-2.5 sm:py-3 rounded-xl bg-lime-500/10 border border-lime-500/20 text-lime-600 font-semibold hover:bg-lime-500/20 transition-colors group text-sm sm:text-base"
                 >
                   <Mail className="h-4 w-4" />
-                  hello@bookmarkaihub.ai
+                  <span className="truncate">hello@bookmarkaihub.ai</span>
                   <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </a>
               </div>
             </div>
 
-            {/* Links Columns */}
-            <div className="md:col-span-7">
-              <div className="grid grid-cols-3 gap-8">
+            {/* Links Columns - MOBILE OPTIMIZED */}
+            <div className="lg:col-span-7">
+              <div className="grid grid-cols-3 gap-6 sm:gap-8">
                 {Object.entries(footerLinks).map(([category, links]) => (
                   <div key={category}>
-                    <h4 className="font-bold text-sm uppercase tracking-wider text-muted-foreground mb-5">{category}</h4>
-                    <ul className="space-y-4">
+                    <h4 className="font-bold text-xs sm:text-sm uppercase tracking-wider text-muted-foreground mb-3 sm:mb-5">{category}</h4>
+                    <ul className="space-y-2 sm:space-y-4">
                       {links.map((link, index) => (
                         <li key={index}>
                           <a
                             href={link.href}
-                            className="text-base text-foreground/80 hover:text-lime-600 transition-colors inline-flex items-center gap-1 group"
+                            className="text-xs sm:text-sm md:text-base text-foreground/80 hover:text-lime-600 transition-colors inline-flex items-center gap-1 group"
                           >
                             {link.label}
-                            <ArrowRight className="h-3 w-3 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+                            <ArrowRight className="h-2.5 w-2.5 sm:h-3 sm:w-3 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
                           </a>
                         </li>
                       ))}
@@ -248,20 +248,20 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Bottom bar */}
-          <div className="mt-16 pt-8 border-t border-border/50">
-            <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-              <div className="flex items-center gap-6">
-                <p className="text-sm text-muted-foreground">
+          {/* Bottom bar - MOBILE OPTIMIZED */}
+          <div className="mt-12 sm:mt-16 pt-6 sm:pt-8 border-t border-border/50">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-3 sm:gap-4">
+              <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-6 text-center sm:text-left">
+                <p className="text-xs sm:text-sm text-muted-foreground">
                   © 2026 Bookmark AI Hub. All rights reserved.
                 </p>
-                <div className="hidden md:flex items-center gap-1">
+                <div className="flex items-center gap-1">
                   <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                  <span className="text-sm text-muted-foreground">All systems operational</span>
+                  <span className="text-xs sm:text-sm text-muted-foreground">All systems operational</span>
                 </div>
               </div>
-              <p className="text-sm text-muted-foreground flex items-center gap-2">
-                Made with <span className="text-red-500">❤️</span> for bookmark enthusiasts everywhere
+              <p className="text-xs sm:text-sm text-muted-foreground flex items-center gap-2">
+                Made with <span className="text-red-500">❤️</span> for bookmark enthusiasts
               </p>
             </div>
           </div>
@@ -270,4 +270,3 @@ export function Footer() {
     </footer>
   )
 }
-
