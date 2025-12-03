@@ -103,8 +103,7 @@ export function Navbar() {
             >
               <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
               <Sparkles className="h-3 w-3 lg:h-4 lg:w-4 mr-1.5 lg:mr-2" />
-              <span className="hidden sm:inline">Join Waitlist #{WAITLIST_POSITION}</span>
-              <span className="sm:hidden">Join #{WAITLIST_POSITION}</span>
+              JOIN WAITING LIST
               <ChevronRight className="h-3 w-3 lg:h-4 lg:w-4 ml-1 group-hover:translate-x-0.5 transition-transform" />
             </Button>
           </motion.div>
@@ -174,7 +173,7 @@ export function Navbar() {
                   className="w-full bg-gradient-to-r from-lime-500 via-yellow-400 to-orange-500 py-5 sm:py-6 text-sm sm:text-base font-semibold text-white"
                 >
                   <Sparkles className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
-                  Join Waitlist #{WAITLIST_POSITION}
+                  JOIN WAITING LIST
                   <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5 ml-2" />
                 </Button>
               </div>
