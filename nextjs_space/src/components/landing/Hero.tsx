@@ -176,17 +176,17 @@ export function Hero() {
                 <Button
                   type="submit"
                   size="lg"
-                  className="h-12 sm:h-14 px-6 sm:px-8 text-base sm:text-lg font-semibold bg-gradient-to-r from-lime-500 via-yellow-400 to-orange-500 hover:from-lime-600 hover:via-yellow-500 hover:to-orange-600 text-white"
+                  className="h-12 sm:h-14 px-4 sm:px-6 md:px-8 text-sm sm:text-base md:text-lg font-semibold bg-gradient-to-r from-lime-500 via-yellow-400 to-orange-500 hover:from-lime-600 hover:via-yellow-500 hover:to-orange-600 text-white"
                 >
-                  <span className="hidden xs:inline">Join Waitlist</span>
-                  <span className="xs:hidden">Join</span>
+                  <span className="hidden sm:inline">Join the waiting list right now</span>
+                  <span className="sm:hidden">Join the waiting list</span>
                   <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
                 </Button>
               </form>
               <p className="mt-3 sm:mt-4 text-sm sm:text-base text-muted-foreground flex flex-wrap items-center gap-2 sm:gap-4">
                 <span className="flex items-center gap-2">
                   <Sparkles className="h-4 w-4 text-lime-500" />
-                  <span className="font-semibold text-foreground">{waitlistPosition - 1}</span> people on waitlist
+                  <span className="font-semibold text-foreground">247</span> people on waitlist
                 </span>
                 <span>•</span>
                 <span>No spam, ever</span>
@@ -286,36 +286,36 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1, duration: 0.8 }}
         >
-          {/* Floating icons around the screenshot - HIDDEN ON MOBILE */}
-          <div className="hidden md:block">
+          {/* Floating icons around the screenshot - VISIBLE ON ALL SCREENS */}
+          <div className="hidden sm:block">
             <FloatingIcon icon={TrendingUp} position="-top-8 left-8 md:left-4" color="from-green-500/30 to-emerald-500/30" delay={1.2} size="lg" />
             <FloatingIcon icon={PieChart} position="-top-6 right-12 md:right-8" color="from-yellow-400/30 to-orange-500/30" delay={1.4} size="lg" />
             <FloatingIcon icon={Clock} position="top-1/3 -left-4 md:-left-10" color="from-blue-500/30 to-cyan-500/30" delay={1.6} size="lg" />
             <FloatingIcon icon={Zap} position="top-1/2 -right-4 md:-right-10" color="from-amber-500/30 to-orange-500/30" delay={1.8} size="lg" />
           </div>
 
-          {/* PROMINENT Callout badges - MOBILE OPTIMIZED */}
+          {/* PROMINENT Callout badges - NOW VISIBLE ON MOBILE */}
+          <CalloutBadge
+            icon={BarChart3}
+            label="Real-Time Analytics"
+            sublabel="Track every click & visit"
+            position="top-left"
+            color="from-lime-500 via-yellow-400 to-orange-500"
+            delay={1.3}
+            arrowDirection="right"
+            size="sm"
+          />
+          <CalloutBadge
+            icon={Brain}
+            label="AI-Powered Insights"
+            sublabel="Smart recommendations"
+            position="top-right"
+            color="from-blue-500 to-cyan-500"
+            delay={1.5}
+            arrowDirection="left"
+            size="sm"
+          />
           <div className="hidden sm:block">
-            <CalloutBadge
-              icon={BarChart3}
-              label="Real-Time Analytics"
-              sublabel="Track every click & visit"
-              position="top-left"
-              color="from-lime-500 via-yellow-400 to-orange-500"
-              delay={1.3}
-              arrowDirection="right"
-              size="xl"
-            />
-            <CalloutBadge
-              icon={Brain}
-              label="AI-Powered Insights"
-              sublabel="Smart recommendations"
-              position="top-right"
-              color="from-blue-500 to-cyan-500"
-              delay={1.5}
-              arrowDirection="left"
-              size="xl"
-            />
             <CalloutBadge
               icon={Sparkles}
               label="One-Click Save"
@@ -324,20 +324,18 @@ export function Hero() {
               color="from-green-500 to-emerald-500"
               delay={1.7}
               arrowDirection="right"
-              size="lg"
+              size="sm"
             />
           </div>
 
-          {/* Stat badge - MOBILE OPTIMIZED */}
-          <div className="hidden sm:block">
-            <StatBadge
-              value="12+"
-              label="Metrics tracked"
-              position="-bottom-8 right-12 md:right-20"
-              color="from-green-500 to-emerald-500"
-              delay={1.9}
-            />
-          </div>
+          {/* Stat badge - NOW VISIBLE ON MOBILE */}
+          <StatBadge
+            value="12+"
+            label="Metrics tracked"
+            position="-bottom-8 right-4 sm:right-12 md:right-20"
+            color="from-green-500 to-emerald-500"
+            delay={1.9}
+          />
 
           <div className="absolute -inset-4 sm:-inset-6 bg-gradient-to-r from-lime-500/25 via-yellow-400/25 to-orange-500/25 rounded-2xl sm:rounded-3xl blur-2xl sm:blur-3xl" />
           <AnimatedScreenshot className="shadow-xl sm:shadow-2xl">

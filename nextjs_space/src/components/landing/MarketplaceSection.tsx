@@ -264,31 +264,31 @@ export function MarketplaceSection() {
           ))}
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 sm:gap-16 items-center px-2 sm:px-0">
           {/* Screenshot */}
           <motion.div
-            className="relative order-2 lg:order-1"
+            className="relative order-2 lg:order-1 max-w-full overflow-hidden"
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <div className="absolute -inset-4 bg-gradient-to-r from-green-500/30 to-emerald-500/30 rounded-2xl blur-2xl" />
-            <AnimatedScreenshot className="shadow-2xl">
-              <img src={marketplaceImg} alt="Marketplace" className="w-full" />
+            <div className="absolute -inset-2 sm:-inset-4 bg-gradient-to-r from-green-500/30 to-emerald-500/30 rounded-xl sm:rounded-2xl blur-xl sm:blur-2xl" />
+            <AnimatedScreenshot className="shadow-xl sm:shadow-2xl max-w-full">
+              <img src={marketplaceImg} alt="Marketplace" className="w-full h-auto" />
             </AnimatedScreenshot>
           </motion.div>
 
           {/* Content */}
           <motion.div
-            className="space-y-8 order-1 lg:order-2"
+            className="space-y-6 sm:space-y-8 order-1 lg:order-2 px-2 sm:px-0 max-w-full"
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-3xl md:text-4xl font-bold">
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold leading-tight">
               Turn Your Research Into Revenue
             </h3>
-            <p className="text-xl text-muted-foreground leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed">
               Spent hours finding the best resources on a topic? Package them into a Playbook and sell it to others who need the same information.
               It's like being a curator at a museum—except you get paid for your expertise.
             </p>
@@ -296,11 +296,12 @@ export function MarketplaceSection() {
             <Button 
               onClick={() => setIsModalOpen(true)}
               size="lg" 
-              className="h-14 px-8 text-lg bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600"
+              className="h-12 sm:h-14 px-4 sm:px-6 md:px-8 text-sm sm:text-base md:text-lg bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 w-full sm:w-auto"
             >
-              <Sparkles className="mr-2 h-5 w-5" />
-              Join Waitlist to Create Playbooks
-              <ArrowRight className="ml-2 h-5 w-5" />
+              <Sparkles className="mr-2 h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0" />
+              <span className="hidden sm:inline">Join Waitlist to Create Playbooks</span>
+              <span className="sm:hidden">Join Waitlist</span>
+              <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0" />
             </Button>
           </motion.div>
         </div>

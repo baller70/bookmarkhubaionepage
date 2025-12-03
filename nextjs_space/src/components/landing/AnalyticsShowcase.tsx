@@ -109,7 +109,7 @@ export function AnalyticsShowcase() {
 
         {/* Stats bar - White background with gradient border icons */}
         <motion.div
-          className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20"
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 mb-16 sm:mb-20 px-2 sm:px-0"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -123,7 +123,7 @@ export function AnalyticsShowcase() {
               className="group"
             >
               <Card className="border-2 border-primary/20 bg-background/80 backdrop-blur overflow-hidden h-full relative">
-                <CardContent className="p-8 text-center relative">
+                <CardContent className="p-4 sm:p-6 md:p-8 text-center relative">
                   {/* Top gradient bar */}
                   <div className={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r ${stat.gradient}`} />
 
@@ -149,15 +149,15 @@ export function AnalyticsShowcase() {
           ))}
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 sm:gap-16 items-center px-2 sm:px-0">
           {/* Analytics features - Interactive */}
           <motion.div
-            className="space-y-4"
+            className="space-y-4 max-w-full"
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-3xl font-bold mb-8">
+            <h3 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 leading-tight">
               KNOW YOUR BOOKMARKS LIKE <span className="text-primary">NEVER BEFORE</span>
             </h3>
             {analyticsFeatures.map((feature, i) => (
@@ -209,48 +209,52 @@ export function AnalyticsShowcase() {
 
           {/* Screenshot with premium frame and annotations */}
           <motion.div
-            className="relative px-4 md:px-12"
+            className="relative px-2 sm:px-4 md:px-12 max-w-full overflow-hidden"
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
             {/* Floating icons */}
-            <FloatingIcon icon={Calendar} position="-top-4 right-4" color="from-purple-500/20 to-pink-500/20" delay={0.3} />
-            <FloatingIcon icon={LineChart} position="top-1/4 -right-4 md:-right-8" color="from-green-500/20 to-emerald-500/20" delay={0.5} size="lg" />
-            <FloatingIcon icon={Sparkles} position="bottom-1/3 -left-2 md:-left-6" color="from-amber-500/20 to-orange-500/20" delay={0.7} />
+            <div className="hidden sm:block">
+              <FloatingIcon icon={Calendar} position="-top-4 right-4" color="from-purple-500/20 to-pink-500/20" delay={0.3} />
+              <FloatingIcon icon={LineChart} position="top-1/4 -right-4 md:-right-8" color="from-green-500/20 to-emerald-500/20" delay={0.5} size="lg" />
+              <FloatingIcon icon={Sparkles} position="bottom-1/3 -left-2 md:-left-6" color="from-amber-500/20 to-orange-500/20" delay={0.7} />
+            </div>
 
             {/* Callout badges */}
-            <CalloutBadge
-              icon={Activity}
-              label="Activity Heatmap"
-              sublabel="Daily patterns"
-              position="top-right"
-              color="from-pink-500 to-rose-500"
-              delay={0.4}
-              arrowDirection="left"
-            />
-            <CalloutBadge
-              icon={Target}
-              label="DNA Profile"
-              sublabel="Your unique pattern"
-              position="bottom-left"
-              color="from-purple-500 to-indigo-500"
-              delay={0.6}
-              arrowDirection="right"
-            />
+            <div className="hidden sm:block">
+              <CalloutBadge
+                icon={Activity}
+                label="Activity Heatmap"
+                sublabel="Daily patterns"
+                position="top-right"
+                color="from-pink-500 to-rose-500"
+                delay={0.4}
+                arrowDirection="left"
+              />
+              <CalloutBadge
+                icon={Target}
+                label="DNA Profile"
+                sublabel="Your unique pattern"
+                position="bottom-left"
+                color="from-purple-500 to-indigo-500"
+                delay={0.6}
+                arrowDirection="right"
+              />
 
-            {/* Stat badge */}
-            <StatBadge
-              value="365"
-              label="Days tracked"
-              position="-bottom-6 right-4 md:right-8"
-              color="from-purple-500 to-pink-500"
-              delay={0.8}
-            />
+              {/* Stat badge */}
+              <StatBadge
+                value="365"
+                label="Days tracked"
+                position="-bottom-6 right-4 md:right-8"
+                color="from-purple-500 to-pink-500"
+                delay={0.8}
+              />
+            </div>
 
-            <div className="absolute -inset-6 bg-gradient-to-r from-purple-500/30 via-pink-500/30 to-purple-500/30 rounded-3xl blur-3xl" />
-            <AnimatedBrowserFrame url="app.bookmarkaihub.ai/analytics" className="shadow-2xl">
-              <img src={analyticsV1Img} alt="Bookmark AI Hub Analytics - DNA Profile and Activity Heatmap" className="w-full" />
+            <div className="absolute -inset-2 sm:-inset-6 bg-gradient-to-r from-purple-500/30 via-pink-500/30 to-purple-500/30 rounded-2xl sm:rounded-3xl blur-2xl sm:blur-3xl" />
+            <AnimatedBrowserFrame url="app.bookmarkaihub.ai/analytics" className="shadow-2xl max-w-full">
+              <img src={analyticsV1Img} alt="Bookmark AI Hub Analytics - DNA Profile and Activity Heatmap" className="w-full h-auto" />
             </AnimatedBrowserFrame>
           </motion.div>
         </div>
