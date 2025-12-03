@@ -1,8 +1,9 @@
 "use client"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
+import { WaitlistModal } from "./WaitlistModal"
 import type { LucideIcon } from "lucide-react"
 import {
   ArrowRight,
@@ -170,7 +171,25 @@ const showcases = [
 
 export function FeatureShowcase() {
   const [activeTab, setActiveTab] = useState(0)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [waitlistPosition, setWaitlistPosition] = useState(248)
   const activeShowcase = showcases[activeTab]
+
+  // Fetch waitlist count on mount
+  useEffect(() => {
+    async function fetchCount() {
+      try {
+        const response = await fetch('/api/waitlist/count')
+        if (response?.ok) {
+          const data = await response.json()
+          setWaitlistPosition(data?.count + 1 || 248)
+        }
+      } catch {
+        // Use default value
+      }
+    }
+    fetchCount()
+  }, [])
 
   return (
     <section className="py-24 relative overflow-hidden">
@@ -268,9 +287,13 @@ export function FeatureShowcase() {
                 ))}
               </ul>
 
-              <Button className="mt-6 h-14 px-8 text-lg group bg-gradient-to-r from-lime-500 via-yellow-400 to-orange-500 hover:from-lime-600 hover:via-yellow-500 hover:to-orange-600 text-white" size="lg">
+              <Button 
+                onClick={() => setIsModalOpen(true)}
+                className="mt-6 h-14 px-8 text-lg group bg-gradient-to-r from-lime-500 via-yellow-400 to-orange-500 hover:from-lime-600 hover:via-yellow-500 hover:to-orange-600 text-white" 
+                size="lg"
+              >
                 <Sparkles className="h-5 w-5 mr-2" />
-                Join Waitlist #248
+                Join Waitlist #{waitlistPosition}
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
             </div>
@@ -336,6 +359,13 @@ export function FeatureShowcase() {
           </motion.div>
         </AnimatePresence>
       </div>
+
+      {/* Waitlist Modal */}
+      <WaitlistModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        nextPosition={waitlistPosition}
+      />
     </section>
   )
 }

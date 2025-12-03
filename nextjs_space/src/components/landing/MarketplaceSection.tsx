@@ -1,9 +1,10 @@
 "use client"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import { WaitlistModal } from "./WaitlistModal"
 import {
   DollarSign,
   Download,
@@ -176,6 +177,25 @@ function PlaybookCard({ playbook, index }: { playbook: typeof examplePlaybooks[0
 }
 
 export function MarketplaceSection() {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [waitlistPosition, setWaitlistPosition] = useState(248)
+
+  // Fetch waitlist count on mount
+  useEffect(() => {
+    async function fetchCount() {
+      try {
+        const response = await fetch('/api/waitlist/count')
+        if (response?.ok) {
+          const data = await response.json()
+          setWaitlistPosition(data?.count + 1 || 248)
+        }
+      } catch {
+        // Use default value
+      }
+    }
+    fetchCount()
+  }, [])
+
   return (
     <section className="py-24 bg-gradient-to-b from-background via-green-500/5 to-background relative overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-green-500/10 via-transparent to-transparent" />
@@ -273,7 +293,11 @@ export function MarketplaceSection() {
               It's like being a curator at a museum—except you get paid for your expertise.
             </p>
 
-            <Button size="lg" className="h-14 px-8 text-lg bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600">
+            <Button 
+              onClick={() => setIsModalOpen(true)}
+              size="lg" 
+              className="h-14 px-8 text-lg bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600"
+            >
               <Sparkles className="mr-2 h-5 w-5" />
               Join Waitlist to Create Playbooks
               <ArrowRight className="ml-2 h-5 w-5" />
@@ -315,6 +339,13 @@ export function MarketplaceSection() {
           </motion.div>
         </motion.div>
       </div>
+
+      {/* Waitlist Modal */}
+      <WaitlistModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        nextPosition={waitlistPosition}
+      />
     </section>
   )
 }

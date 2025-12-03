@@ -1,8 +1,35 @@
 "use client"
+import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { Rocket, Users, ArrowRight, Sparkles, Clock, Shield } from "lucide-react"
+import { WaitlistModal } from "./WaitlistModal"
 
 export function CTA() {
+  const [email, setEmail] = useState("")
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [waitlistPosition, setWaitlistPosition] = useState(248)
+
+  // Fetch waitlist count on mount
+  useEffect(() => {
+    async function fetchCount() {
+      try {
+        const response = await fetch('/api/waitlist/count')
+        if (response?.ok) {
+          const data = await response.json()
+          setWaitlistPosition(data?.count + 1 || 248)
+        }
+      } catch {
+        // Use default value
+      }
+    }
+    fetchCount()
+  }, [])
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsModalOpen(true)
+  }
+
   return (
     <section className="py-32 bg-gradient-to-br from-lime-500 via-yellow-400 to-orange-500 text-white relative overflow-hidden">
       {/* Animated background elements */}
@@ -48,7 +75,7 @@ export function CTA() {
               <div className="w-10 h-10 rounded-lg bg-white/20 flex items-center justify-center">
                 <Users className="h-5 w-5" strokeWidth={1.5} />
               </div>
-              <span className="font-medium">247 on waitlist</span>
+              <span className="font-medium">{waitlistPosition - 1} on waitlist</span>
             </div>
             <div className="flex items-center gap-3 bg-white/15 backdrop-blur-sm rounded-xl px-5 py-3 text-base border border-white/20">
               <div className="w-10 h-10 rounded-lg bg-white/20 flex items-center justify-center">
@@ -65,20 +92,26 @@ export function CTA() {
           </div>
 
           {/* Inline waitlist form */}
-          <div className="max-w-2xl mx-auto">
+          <form onSubmit={handleSubmit} className="max-w-2xl mx-auto">
             <div className="flex flex-col sm:flex-row gap-4 p-3 bg-white/10 backdrop-blur-sm rounded-2xl border-2 border-white/20">
               <input
                 type="email"
                 placeholder="Enter your email address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
                 className="flex-1 h-16 px-6 rounded-xl bg-white/20 border-2 border-white/30 text-white text-lg placeholder:text-white/60 focus:outline-none focus:border-white transition-colors"
               />
-              <button className="h-16 px-10 rounded-xl bg-white text-lime-600 font-bold text-lg hover:bg-lime-50 hover:text-lime-700 transition-all flex items-center justify-center gap-3 shadow-lg hover:shadow-xl">
+              <button 
+                type="submit"
+                className="h-16 px-10 rounded-xl bg-white text-lime-600 font-bold text-lg hover:bg-lime-50 hover:text-lime-700 transition-all flex items-center justify-center gap-3 shadow-lg hover:shadow-xl"
+              >
                 <Sparkles className="h-5 w-5" />
                 Join Waitlist
                 <ArrowRight className="h-5 w-5" />
               </button>
             </div>
-          </div>
+          </form>
 
           <p className="text-base opacity-80 mt-8 flex items-center justify-center gap-4 flex-wrap">
             <span className="flex items-center gap-2">
@@ -92,6 +125,13 @@ export function CTA() {
           </p>
         </motion.div>
       </div>
+
+      {/* Waitlist Modal */}
+      <WaitlistModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        nextPosition={waitlistPosition}
+      />
     </section>
   )
 }

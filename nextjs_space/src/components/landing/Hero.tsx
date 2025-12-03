@@ -26,6 +26,7 @@ import {
 const analyticsImg = "/screenshots/ANALYTICS.png"
 import { CalloutBadge, FloatingIcon, StatBadge } from "@/components/ui/screenshot-annotations"
 import { AnimatedScreenshot } from "@/components/ui/animated-screenshot"
+import { WaitlistModal } from "./WaitlistModal"
 
 const platforms = [
   { icon: Globe, label: "Web App" },
@@ -47,12 +48,30 @@ const demoSteps = [
 export function Hero() {
   const [currentStep, setCurrentStep] = useState(0)
   const [email, setEmail] = useState("")
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [waitlistPosition, setWaitlistPosition] = useState(248)
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentStep((prev) => (prev + 1) % demoSteps.length)
     }, 3000)
     return () => clearInterval(interval)
+  }, [])
+
+  // Fetch waitlist count on mount
+  useEffect(() => {
+    async function fetchCount() {
+      try {
+        const response = await fetch('/api/waitlist/count')
+        if (response?.ok) {
+          const data = await response.json()
+          setWaitlistPosition(data?.count + 1 || 248)
+        }
+      } catch {
+        // Use default value
+      }
+    }
+    fetchCount()
   }, [])
 
   return (
@@ -139,7 +158,13 @@ export function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
             >
-              <form className="flex flex-col sm:flex-row gap-4 max-w-lg">
+              <form 
+                className="flex flex-col sm:flex-row gap-4 max-w-lg"
+                onSubmit={(e) => {
+                  e.preventDefault()
+                  setIsModalOpen(true)
+                }}
+              >
                 <input
                   type="email"
                   placeholder="Enter your email"
@@ -159,7 +184,7 @@ export function Hero() {
               <p className="mt-4 text-base text-muted-foreground flex items-center gap-4">
                 <span className="flex items-center gap-2">
                   <Sparkles className="h-4 w-4 text-lime-500" />
-                  <span className="font-semibold text-foreground">247</span> people on waitlist
+                  <span className="font-semibold text-foreground">{waitlistPosition - 1}</span> people on waitlist
                 </span>
                 <span>•</span>
                 <span>No spam, ever</span>
@@ -312,6 +337,13 @@ export function Hero() {
           </AnimatedScreenshot>
         </motion.div>
       </div>
+
+      {/* Waitlist Modal */}
+      <WaitlistModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        nextPosition={waitlistPosition}
+      />
     </section>
   )
 }
