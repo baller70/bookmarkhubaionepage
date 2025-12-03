@@ -113,8 +113,8 @@ export function PASSection() {
                   }`}
                   onClick={() => toggleProblem(i)}
                 >
-                  <CardContent className="p-6 sm:p-8">
-                    <div className="flex items-start gap-4 sm:gap-5">
+                  <CardContent className="p-2">
+                    <div className="flex items-start gap-2">
                       {/* Icon - ALWAYS RED (stays red even when card is green) */}
                       <div className="relative flex-shrink-0 group">
                         {/* Glow effect */}
@@ -141,7 +141,7 @@ export function PASSection() {
                               transition={{ duration: 0.3 }}
                             >
                               {/* Problem text - IN RED */}
-                              <div className="mb-4 p-5 sm:p-6 rounded-xl bg-red-500/10 border border-red-500/20">
+                              <div className="mb-4 p-3 rounded-xl bg-red-500/10 border border-red-500/20">
                                 <p className="text-red-600 font-semibold text-base sm:text-lg mb-3">
                                   😤 THE PROBLEM:
                                 </p>
@@ -155,7 +155,7 @@ export function PASSection() {
                               </div>
 
                               {/* Solution text - IN GREEN */}
-                              <div className="p-5 sm:p-6 rounded-xl bg-emerald-500/10 border border-emerald-500/20">
+                              <div className="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20">
                                 <div className="flex items-center gap-2 sm:gap-3 mb-3">
                                   <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-gradient-to-br from-emerald-400 to-green-600 flex items-center justify-center shadow-md shadow-emerald-500/30">
                                     <problem.solutionIcon className="h-5 w-5 sm:h-6 sm:w-6 text-white" strokeWidth={2} />
