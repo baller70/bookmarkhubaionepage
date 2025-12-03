@@ -267,7 +267,7 @@ export function MarketplaceSection() {
         <div className="grid lg:grid-cols-2 gap-12 sm:gap-16 items-center px-2 sm:px-0">
           {/* Screenshot */}
           <motion.div
-            className="relative order-2 lg:order-1 max-w-full overflow-hidden"
+            className="relative order-2 lg:order-1 max-w-full px-4 sm:px-8 md:px-12 py-8 sm:py-12 md:py-16"
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
