@@ -209,7 +209,7 @@ export function AnalyticsShowcase() {
 
           {/* Screenshot with premium frame and annotations */}
           <motion.div
-            className="relative px-2 sm:px-4 md:px-12 max-w-full overflow-hidden"
+            className="relative px-2 sm:px-4 md:px-12 py-8 sm:py-12 md:py-16 max-w-full"
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
