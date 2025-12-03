@@ -13,7 +13,7 @@ import {
   Footer,
 } from "@/components/landing"
 
-function App() {
+export default function Home() {
   return (
     <div className="min-h-screen bg-background bg-polka-dots">
       {/* Navigation */}
@@ -60,5 +60,3 @@ function App() {
     </div>
   )
 }
-
-export default App

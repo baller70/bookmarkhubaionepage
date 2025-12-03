@@ -1,3 +1,4 @@
+"use client"
 import { useState, useEffect, useRef } from "react"
 import { motion, AnimatePresence, useInView } from "framer-motion"
 import { Button } from "@/components/ui/button"
@@ -6,7 +7,7 @@ import { Badge } from "@/components/ui/badge"
 import { ArrowRight, Check, Users, Gift, AlertCircle, TrendingUp, Clock, Zap } from "lucide-react"
 
 // API base URL - change this to your production URL when deploying
-const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:3001"
+const API_BASE_URL = ""
 
 interface WaitlistFormProps {
   variant?: "hero" | "inline" | "modal"

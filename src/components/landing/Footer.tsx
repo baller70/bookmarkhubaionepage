@@ -1,3 +1,4 @@
+"use client"
 import { motion } from "framer-motion"
 import { Logo } from "@/components/ui/logo"
 import { Mail, ArrowRight, ExternalLink } from "lucide-react"

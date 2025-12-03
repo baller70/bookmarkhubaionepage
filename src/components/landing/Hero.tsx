@@ -1,3 +1,4 @@
+"use client"
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Badge } from "@/components/ui/badge"
@@ -22,7 +23,7 @@ import {
   PieChart,
   FolderKanban
 } from "lucide-react"
-import analyticsImg from "@/assets/screenshots/ANALYTICS.png"
+const analyticsImg = "/screenshots/ANALYTICS.png"
 import { CalloutBadge, FloatingIcon, StatBadge } from "@/components/ui/screenshot-annotations"
 import { AnimatedScreenshot } from "@/components/ui/animated-screenshot"
 

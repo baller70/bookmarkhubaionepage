@@ -1,3 +1,4 @@
+"use client"
 import { useRef, useState } from "react"
 import { motion, useAnimationFrame } from "framer-motion"
 import { Badge } from "@/components/ui/badge"

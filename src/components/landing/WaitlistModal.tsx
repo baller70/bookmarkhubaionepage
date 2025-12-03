@@ -1,9 +1,10 @@
+"use client"
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { X, ArrowRight, Check, Gift, AlertCircle, Sparkles, Users } from "lucide-react"
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:3001"
+const API_BASE_URL = ""
 
 interface WaitlistModalProps {
   isOpen: boolean

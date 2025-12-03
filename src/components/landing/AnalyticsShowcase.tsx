@@ -1,3 +1,4 @@
+"use client"
 import { useState } from "react"
 import { motion } from "framer-motion"
 import { Badge } from "@/components/ui/badge"
@@ -16,7 +17,7 @@ import {
   Sparkles,
   LineChart
 } from "lucide-react"
-import analyticsV1Img from "@/assets/screenshots/Anaylrics v1.png"
+const analyticsV1Img = "/screenshots/Anaylrics v1.png"
 import { CalloutBadge, FloatingIcon, StatBadge } from "@/components/ui/screenshot-annotations"
 import { AnimatedBrowserFrame } from "@/components/ui/animated-screenshot"
 

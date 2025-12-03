@@ -1,3 +1,4 @@
+"use client"
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Badge } from "@/components/ui/badge"
@@ -22,10 +23,10 @@ import {
   Brain,
   Layers
 } from "lucide-react"
-import dashboardV2Img from "@/assets/screenshots/Dashboard.png"
-import differentViewsImg from "@/assets/screenshots/Different views.png"
-import aiLinkpilotImg from "@/assets/screenshots/ai-linkpilot.png"
-import marketplaceImg from "@/assets/screenshots/marketplace.png"
+const dashboardV2Img = "/screenshots/Dashboard.png"
+const differentViewsImg = "/screenshots/Different views.png"
+const aiLinkpilotImg = "/screenshots/ai-linkpilot.png"
+const marketplaceImg = "/screenshots/marketplace.png"
 import { CalloutBadge, FloatingIcon, StatBadge } from "@/components/ui/screenshot-annotations"
 import { AnimatedScreenshot } from "@/components/ui/animated-screenshot"
 

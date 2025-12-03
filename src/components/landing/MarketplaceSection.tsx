@@ -1,3 +1,4 @@
+"use client"
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Badge } from "@/components/ui/badge"
@@ -16,7 +17,7 @@ import {
   ExternalLink,
   Bookmark
 } from "lucide-react"
-import marketplaceImg from "@/assets/screenshots/marketplace.png"
+const marketplaceImg = "/screenshots/marketplace.png"
 import { AnimatedScreenshot } from "@/components/ui/animated-screenshot"
 
 // Realistic pre-launch stats

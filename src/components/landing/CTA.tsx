@@ -1,3 +1,4 @@
+"use client"
 import { motion } from "framer-motion"
 import { Rocket, Users, ArrowRight, Sparkles, Clock, Shield } from "lucide-react"
 
