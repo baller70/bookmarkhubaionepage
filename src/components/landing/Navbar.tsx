@@ -4,8 +4,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Logo } from "@/components/ui/logo"
-import { Menu, X, Sparkles, ChevronRight, Rocket, LogIn } from "lucide-react"
-import { WaitlistModal } from "./WaitlistModal"
+import { Menu, X, ChevronRight, Rocket, LogIn } from "lucide-react"
 
 const navLinks = [
   { label: "FEATURES", href: "#features" },
@@ -15,14 +14,10 @@ const navLinks = [
   { label: "FAQ", href: "#faq" },
 ]
 
-// Hardcoded waitlist position
-const WAITLIST_POSITION = 248
-
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [activeLink, setActiveLink] = useState("")
-  const [isModalOpen, setIsModalOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -108,17 +103,6 @@ export function Navbar() {
               </a>
             </Button>
           </motion.div>
-          <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-            <Button
-              onClick={() => setIsModalOpen(true)}
-              className="relative overflow-hidden bg-gradient-to-r from-lime-500 via-yellow-400 to-orange-500 hover:from-lime-600 hover:via-yellow-500 hover:to-orange-600 shadow-lg shadow-lime-500/25 px-6 py-5 text-sm font-semibold group text-white"
-            >
-              <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
-              <Sparkles className="h-4 w-4 mr-2" />
-              Join Waitlist #{WAITLIST_POSITION}
-              <ChevronRight className="h-4 w-4 ml-1 group-hover:translate-x-0.5 transition-transform" />
-            </Button>
-          </motion.div>
         </div>
 
         {/* Mobile Menu Button - Enhanced */}
@@ -179,7 +163,7 @@ export function Navbar() {
                   <ChevronRight className="h-4 w-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
                 </motion.a>
               ))}
-              <div className="pt-4 mt-4 border-t border-border/50 space-y-3">
+              <div className="pt-4 mt-4 border-t border-border/50">
                 <Button
                   asChild
                   variant="outline"
@@ -190,26 +174,12 @@ export function Navbar() {
                     Login
                   </a>
                 </Button>
-                <Button
-                  onClick={() => { setMobileMenuOpen(false); setIsModalOpen(true) }}
-                  className="w-full bg-gradient-to-r from-lime-500 via-yellow-400 to-orange-500 py-6 text-base font-semibold text-white"
-                >
-                  <Sparkles className="h-5 w-5 mr-2" />
-                  Join Waitlist #{WAITLIST_POSITION}
-                  <ChevronRight className="h-5 w-5 ml-2" />
-                </Button>
               </div>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* Waitlist Modal */}
-      <WaitlistModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        nextPosition={WAITLIST_POSITION}
-      />
     </motion.nav>
   )
 }
