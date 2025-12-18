@@ -249,12 +249,12 @@ export function PricingPage() {
         <motion.div
           className="absolute top-20 left-10 w-72 h-72 bg-lime-500/20 rounded-full blur-[100px]"
           animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.3, 0.2] }}
-          transition={{ duration: 8, repeat: Infinity }}
+          transition={{ duration: 8, repeat: Number.POSITIVE_INFINITY }}
         />
         <motion.div
           className="absolute bottom-20 right-10 w-96 h-96 bg-orange-500/20 rounded-full blur-[120px]"
           animate={{ scale: [1.2, 1, 1.2], opacity: [0.3, 0.2, 0.3] }}
-          transition={{ duration: 10, repeat: Infinity }}
+          transition={{ duration: 10, repeat: Number.POSITIVE_INFINITY }}
         />
 
         <div className="container relative">
