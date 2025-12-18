@@ -10,10 +10,10 @@ interface LogoProps {
 }
 
 const sizes = {
-  sm: { icon: "w-9 h-9", text: "text-lg", aiText: "text-[8px]" },
-  md: { icon: "w-11 h-11", text: "text-xl", aiText: "text-[10px]" },
-  lg: { icon: "w-14 h-14", text: "text-2xl", aiText: "text-xs" },
-  xl: { icon: "w-20 h-20", text: "text-3xl", aiText: "text-sm" },
+  sm: { icon: "w-12 h-12", text: "text-xl", aiText: "text-[10px]" },
+  md: { icon: "w-14 h-14", text: "text-2xl", aiText: "text-xs" },
+  lg: { icon: "w-18 h-18", text: "text-3xl", aiText: "text-sm" },
+  xl: { icon: "w-24 h-24", text: "text-4xl", aiText: "text-base" },
 }
 
 export function Logo({ size = "md", showText = true, className, animated = false }: LogoProps) {
