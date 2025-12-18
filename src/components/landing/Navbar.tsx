@@ -10,6 +10,7 @@ import { WaitlistModal } from "./WaitlistModal"
 const navLinks = [
   { label: "FEATURES", href: "#features" },
   { label: "ANALYTICS", href: "#analytics" },
+  { label: "PRICING", href: "/pricing" },
   { label: "MARKETPLACE", href: "#marketplace" },
   { label: "FAQ", href: "#faq" },
 ]
