@@ -1,3 +1,4 @@
+"use client"
 import { motion } from "framer-motion"
 import { cn } from "@/lib/utils"
 
@@ -9,93 +10,103 @@ interface LogoProps {
 }
 
 const sizes = {
-  sm: { icon: "w-8 h-12", text: "text-lg" },
-  md: { icon: "w-10 h-14", text: "text-xl" },
-  lg: { icon: "w-14 h-20", text: "text-2xl" },
-  xl: { icon: "w-20 h-28", text: "text-3xl" },
+  sm: { icon: "w-9 h-9", text: "text-lg", aiText: "text-[8px]" },
+  md: { icon: "w-11 h-11", text: "text-xl", aiText: "text-[10px]" },
+  lg: { icon: "w-14 h-14", text: "text-2xl", aiText: "text-xs" },
+  xl: { icon: "w-20 h-20", text: "text-3xl", aiText: "text-sm" },
 }
 
 export function Logo({ size = "md", showText = true, className, animated = false }: LogoProps) {
-  const { icon, text } = sizes[size]
+  const { icon, text, aiText } = sizes[size]
 
-  const IconWrapper = animated ? motion.div : "div"
-  const animationProps = animated ? {
-    whileHover: { scale: 1.05 },
-    whileTap: { scale: 0.95 },
-  } : {}
+  const iconContent = (
+    <div className="relative w-full h-full">
+      <svg
+        viewBox="0 0 48 48"
+        fill="none"
+        className="w-full h-full"
+      >
+        {/* Outer dark rounded rectangle border */}
+        <rect
+          x="2"
+          y="2"
+          width="44"
+          height="44"
+          rx="10"
+          ry="10"
+          fill="#3D2F1F"
+        />
+        {/* Inner golden/tan background */}
+        <rect
+          x="5"
+          y="5"
+          width="38"
+          height="38"
+          rx="7"
+          ry="7"
+          fill="#C9A55C"
+        />
+        {/* Bookmark shape with AI text */}
+        <path
+          d="M16 10H32V32L24 26L16 32V10Z"
+          fill="#3D2F1F"
+        />
+      </svg>
+
+      {/* AI text inside the bookmark */}
+      <div className="absolute inset-0 flex items-center justify-center" style={{ marginTop: '-8%' }}>
+        <span
+          className={cn(aiText, "font-black text-[#C9A55C] select-none tracking-tight")}
+        >
+          AI
+        </span>
+      </div>
+    </div>
+  )
 
   return (
-    <div className={cn("flex items-center gap-3", className)}>
-      <IconWrapper
-        className={cn(
-          icon,
-          "relative flex items-center justify-center"
-        )}
-        {...animationProps}
-      >
-        {/* Main bookmark icon - Outlined with solid inside */}
-        <div className="relative w-full h-full">
-          <svg
-            viewBox="0 0 32 48"
-            fill="none"
-            className="w-full h-full"
-          >
-            {/* Outer outlined bookmark stroke */}
-            <path
-              d="M2 4C2 2.89543 2.89543 2 4 2H28C29.1046 2 30 2.89543 30 4V44L16 35L2 44V4Z"
-              stroke="url(#bookmark-outline-gradient)"
-              strokeWidth="2.5"
-              fill="none"
-            />
-            {/* Inner solid filled bookmark */}
-            <path
-              d="M6 7C6 6.44772 6.44772 6 7 6H25C25.5523 6 26 6.44772 26 7V39L16 32L6 39V7Z"
-              fill="url(#bookmark-fill-gradient)"
-            />
-            <defs>
-              <linearGradient id="bookmark-outline-gradient" x1="16" y1="0" x2="16" y2="48" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stopColor="#FCD34D" />
-                <stop offset="50%" stopColor="#F59E0B" />
-                <stop offset="100%" stopColor="#D97706" />
-              </linearGradient>
-              <linearGradient id="bookmark-fill-gradient" x1="16" y1="6" x2="16" y2="39" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stopColor="#FDE68A" />
-                <stop offset="50%" stopColor="#FBBF24" />
-                <stop offset="100%" stopColor="#F59E0B" />
-              </linearGradient>
-            </defs>
-          </svg>
-
-          {/* AI watermark text - centered in the bookmark */}
-          <div className="absolute inset-0 flex items-center justify-center" style={{ marginTop: '-15%' }}>
-            <motion.span
-              className="font-black text-amber-900/30 select-none"
-              style={{ fontSize: 'clamp(10px, 45%, 18px)' }}
-              animate={animated ? { opacity: [0.25, 0.4, 0.25] } : {}}
-              transition={{ duration: 2, repeat: Infinity }}
-            >
-              AI
-            </motion.span>
-          </div>
+    <div className={cn("flex items-center gap-2", className)}>
+      {showText && (
+        <span className={cn(text, "font-black tracking-tight leading-none whitespace-nowrap text-foreground")}>
+          BOOKMARK
+        </span>
+      )}
+      
+      {animated ? (
+        <motion.div
+          className={cn(icon, "relative flex items-center justify-center")}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          {iconContent}
+        </motion.div>
+      ) : (
+        <div className={cn(icon, "relative flex items-center justify-center")}>
+          {iconContent}
         </div>
-      </IconWrapper>
+      )}
 
       {showText && (
-        <span className={cn(text, "font-black tracking-tight leading-none whitespace-nowrap")}>
-          <span className="text-foreground">BOOKMARK</span>
-          <span className="bg-gradient-to-r from-lime-500 via-yellow-400 to-orange-500 bg-clip-text text-transparent">AI HUB</span>
+        <span className={cn(text, "font-black tracking-tight leading-none whitespace-nowrap text-foreground")}>
+          HUB
         </span>
       )}
     </div>
   )
 }
 
-// Alternative minimal logo for small spaces
+// Alternative minimal logo for small spaces (just the icon)
 export function LogoMark({ size = "md", className }: { size?: "sm" | "md" | "lg", className?: string }) {
   const sizeClasses = {
-    sm: "w-5 h-7",
-    md: "w-6 h-9",
-    lg: "w-10 h-14"
+    sm: "w-7 h-7",
+    md: "w-9 h-9",
+    lg: "w-12 h-12"
+  }
+
+  const aiTextSizes = {
+    sm: "text-[6px]",
+    md: "text-[8px]",
+    lg: "text-[10px]"
   }
 
   return (
@@ -104,35 +115,40 @@ export function LogoMark({ size = "md", className }: { size?: "sm" | "md" | "lg"
       "relative flex items-center justify-center",
       className
     )}>
-      <svg viewBox="0 0 32 48" fill="none" className="w-full h-full">
-        {/* Outer outlined bookmark stroke */}
-        <path
-          d="M2 4C2 2.89543 2.89543 2 4 2H28C29.1046 2 30 2.89543 30 4V44L16 35L2 44V4Z"
-          stroke="url(#bookmark-mark-outline)"
-          strokeWidth="2"
-          fill="none"
+      <svg viewBox="0 0 48 48" fill="none" className="w-full h-full">
+        {/* Outer dark rounded rectangle border */}
+        <rect
+          x="2"
+          y="2"
+          width="44"
+          height="44"
+          rx="10"
+          ry="10"
+          fill="#3D2F1F"
         />
-        {/* Inner solid filled bookmark */}
-        <path
-          d="M6 7C6 6.44772 6.44772 6 7 6H25C25.5523 6 26 6.44772 26 7V39L16 32L6 39V7Z"
-          fill="url(#bookmark-mark-fill)"
+        {/* Inner golden/tan background */}
+        <rect
+          x="5"
+          y="5"
+          width="38"
+          height="38"
+          rx="7"
+          ry="7"
+          fill="#C9A55C"
         />
-        <defs>
-          <linearGradient id="bookmark-mark-outline" x1="16" y1="0" x2="16" y2="48" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stopColor="#FCD34D" />
-            <stop offset="100%" stopColor="#D97706" />
-          </linearGradient>
-          <linearGradient id="bookmark-mark-fill" x1="16" y1="6" x2="16" y2="39" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stopColor="#FDE68A" />
-            <stop offset="100%" stopColor="#F59E0B" />
-          </linearGradient>
-        </defs>
+        {/* Bookmark shape */}
+        <path
+          d="M16 10H32V32L24 26L16 32V10Z"
+          fill="#3D2F1F"
+        />
       </svg>
-      {/* AI text watermark */}
-      <span className="absolute font-black text-amber-900/30 select-none" style={{ fontSize: 'clamp(6px, 35%, 12px)', marginTop: '-10%' }}>
+      {/* AI text inside */}
+      <span 
+        className={cn(aiTextSizes[size], "absolute font-black text-[#C9A55C] select-none tracking-tight")}
+        style={{ marginTop: '-8%' }}
+      >
         AI
       </span>
     </div>
   )
 }
-
