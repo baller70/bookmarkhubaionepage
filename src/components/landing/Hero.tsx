@@ -28,9 +28,9 @@ import { CalloutBadge, FloatingIcon, StatBadge } from "@/components/ui/screensho
 import { AnimatedScreenshot } from "@/components/ui/animated-screenshot"
 
 const platforms = [
-  { icon: Globe, label: "Web App" },
-  { icon: Smartphone, label: "iOS App" },
-  { icon: Chrome, label: "Chrome Extension" },
+  { icon: Globe, label: "Web App", href: "https://app.bookmarkaihub.com" },
+  { icon: Smartphone, label: "iOS App", href: null },
+  { icon: Chrome, label: "Chrome Extension", href: null },
 ]
 
 // Interactive demo states - 7 steps including Project Management and Marketplace
@@ -125,10 +125,19 @@ export function Hero() {
               transition={{ delay: 0.5 }}
             >
               {platforms.map((platform, i) => (
-                <Badge key={i} className="px-5 py-2.5 gap-2 text-base bg-black text-white border-black">
-                  <platform.icon className="h-5 w-5 text-white" strokeWidth={1.5} />
-                  {platform.label}
-                </Badge>
+                platform.href ? (
+                  <a key={i} href={platform.href} target="_blank" rel="noopener noreferrer">
+                    <Badge className="px-5 py-2.5 gap-2 text-base bg-black text-white border-black hover:bg-gray-800 transition-colors cursor-pointer">
+                      <platform.icon className="h-5 w-5 text-white" strokeWidth={1.5} />
+                      {platform.label}
+                    </Badge>
+                  </a>
+                ) : (
+                  <Badge key={i} className="px-5 py-2.5 gap-2 text-base bg-black text-white border-black">
+                    <platform.icon className="h-5 w-5 text-white" strokeWidth={1.5} />
+                    {platform.label}
+                  </Badge>
+                )
               ))}
             </motion.div>
 
