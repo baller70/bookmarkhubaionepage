@@ -2,9 +2,9 @@
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
 import { Logo } from "@/components/ui/logo"
-import { Menu, X, ChevronRight, Rocket, LogIn } from "lucide-react"
+import { WaitlistModal } from "@/components/landing/WaitlistModal"
+import { Menu, X, ChevronRight, Sparkles } from "lucide-react"
 
 const navLinks = [
   { label: "FEATURES", href: "#features" },
@@ -18,6 +18,8 @@ export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [activeLink, setActiveLink] = useState("")
+  const [waitlistModalOpen, setWaitlistModalOpen] = useState(false)
+  const [waitlistCount, setWaitlistCount] = useState(247)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,6 +27,21 @@ export function Navbar() {
     }
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  useEffect(() => {
+    async function fetchWaitlistCount() {
+      try {
+        const response = await fetch("/api/waitlist/count")
+        if (response.ok) {
+          const data = await response.json()
+          setWaitlistCount(data.count + 1)
+        }
+      } catch {
+        // Use default count
+      }
+    }
+    fetchWaitlistCount()
   }, [])
 
   return (
@@ -84,23 +101,14 @@ export function Navbar() {
 
         {/* Desktop CTA - Premium design */}
         <div className="hidden md:flex items-center gap-4">
-          <Badge
-            variant="outline"
-            className="px-4 py-2 text-xs font-semibold border-amber-500/30 bg-amber-500/10 text-amber-600 gap-2"
-          >
-            <Rocket className="h-3.5 w-3.5" />
-            Q1 2026
-          </Badge>
           <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
             <Button
-              asChild
-              variant="outline"
-              className="px-5 py-5 text-sm font-semibold border-2 border-border hover:border-foreground hover:bg-foreground hover:text-background transition-all"
+              onClick={() => setWaitlistModalOpen(true)}
+              className="px-6 py-5 text-sm font-bold bg-gradient-to-r from-orange-500 via-orange-400 to-yellow-400 hover:from-orange-600 hover:via-orange-500 hover:to-yellow-500 text-white border-0 rounded-full shadow-lg shadow-orange-500/25 transition-all cursor-pointer"
             >
-              <a href="https://app.bookmarkaihub.com/auth/signin">
-                <LogIn className="h-4 w-4 mr-2" />
-                Login
-              </a>
+              <Sparkles className="h-4 w-4 mr-2" />
+              JOIN WAITING LIST
+              <ChevronRight className="h-4 w-4 ml-1" />
             </Button>
           </motion.div>
         </div>
@@ -165,14 +173,12 @@ export function Navbar() {
               ))}
               <div className="pt-4 mt-4 border-t border-border/50">
                 <Button
-                  asChild
-                  variant="outline"
-                  className="w-full py-6 text-base font-semibold border-2 border-border hover:border-foreground hover:bg-foreground hover:text-background transition-all"
+                  onClick={() => { setMobileMenuOpen(false); setWaitlistModalOpen(true); }}
+                  className="w-full py-6 text-base font-bold bg-gradient-to-r from-orange-500 via-orange-400 to-yellow-400 hover:from-orange-600 hover:via-orange-500 hover:to-yellow-500 text-white border-0 rounded-full shadow-lg shadow-orange-500/25 transition-all cursor-pointer"
                 >
-                  <a href="https://app.bookmarkaihub.com/auth/signin" onClick={() => setMobileMenuOpen(false)}>
-                    <LogIn className="h-5 w-5 mr-2" />
-                    Login
-                  </a>
+                  <Sparkles className="h-5 w-5 mr-2" />
+                  JOIN WAITING LIST
+                  <ChevronRight className="h-5 w-5 ml-1" />
                 </Button>
               </div>
             </div>
@@ -180,6 +186,12 @@ export function Navbar() {
         )}
       </AnimatePresence>
 
+      {/* Waitlist Modal */}
+      <WaitlistModal
+        isOpen={waitlistModalOpen}
+        onClose={() => setWaitlistModalOpen(false)}
+        nextPosition={waitlistCount}
+      />
     </motion.nav>
   )
 }
