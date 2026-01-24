@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import "./globals.css";
+import { PostHogProvider, PostHogPageview } from "@/components/providers/PostHogProvider";
 
 export const metadata: Metadata = {
   title: "Bookmark AI Hub - AI-Powered Bookmark Management",
@@ -14,7 +16,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased">
-        {children}
+        <PostHogProvider>
+          <Suspense fallback={null}>
+            <PostHogPageview />
+          </Suspense>
+          {children}
+        </PostHogProvider>
       </body>
     </html>
   );
