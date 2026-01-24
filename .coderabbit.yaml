@@ -1,0 +1,56 @@
+# CodeRabbit Configuration
+# Documentation: https://docs.coderabbit.ai/guides/configure-coderabbit
+
+language: "en-US"
+
+early_access: false
+
+reviews:
+  # Enable automated code reviews on PRs
+  request_changes_workflow: true
+  high_level_summary: true
+  poem: false
+  review_status: true
+  collapse_walkthrough: false
+  
+  # Auto-review settings
+  auto_review:
+    enabled: true
+    drafts: false
+    base_branches:
+      - main
+      - develop
+
+  # Path-based instructions
+  path_instructions:
+    - path: "src/components/**/*"
+      instructions: "Review React components for accessibility, performance, and proper use of hooks. Check for proper TypeScript types."
+    - path: "src/app/api/**/*"
+      instructions: "Review API routes for proper error handling, input validation, and security best practices."
+    - path: "src/lib/**/*"
+      instructions: "Review utility functions for proper error handling and TypeScript types."
+
+  # Tools to use for review
+  tools:
+    eslint:
+      enabled: true
+    biome:
+      enabled: false
+    shellcheck:
+      enabled: true
+    markdownlint:
+      enabled: true
+    github-checks:
+      enabled: true
+
+chat:
+  auto_reply: true
+
+# Knowledge base for context
+knowledge_base:
+  learnings:
+    scope: auto
+  issues:
+    scope: auto
+  pull_requests:
+    scope: auto
