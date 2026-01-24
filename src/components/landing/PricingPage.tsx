@@ -10,13 +10,11 @@ import {
   Zap,
   Crown,
   Rocket,
-  Infinity,
-  Shield,
+  X,
   CreditCard,
   Users,
   ArrowRight,
   HelpCircle,
-  ChevronDown,
   Star,
   Clock,
   Gift,
@@ -33,144 +31,117 @@ import {
 const plans = [
   {
     id: "free",
-    name: "Starter",
+    name: "Pro",
     tagline: "FREE TIER",
     price: { monthly: 0, yearly: 0 },
     period: "forever free",
-    description: "Perfect for casual users testing the platform",
+    description: "Perfect for getting started with BookmarkAI",
     icon: Zap,
     color: "from-gray-500 to-slate-600",
     borderColor: "border-gray-200",
     features: [
-      "Save up to 100 bookmarks",
-      "5 categories & 3 tags",
-      "Basic views (Grid, List)",
-      "Standard search",
-      "1 active productivity tool",
-      "Mobile & desktop access",
-      "Basic support"
+      "50 bookmarks",
+      "1 company workspace",
+      "3 AI summaries/month",
+      "2 AI brainstorms/month",
+      "5 Oracle AI commands/month",
+      "3 Mind Maps/month",
+      "3 Vision Boards/month",
+      "1 export/month",
+      "Basic organization tools",
+    ],
+    notIncluded: [
+      "E-Signatures not included"
     ],
     cta: "Get Started Free",
     popular: false,
     trial: false
   },
   {
-    id: "ultra",
-    name: "Pro",
-    tagline: "ULTRA TIER",
-    price: { monthly: 8, yearly: 80 },
+    id: "pro_plus",
+    name: "Pro Plus",
+    tagline: "PRO PLUS",
+    price: { monthly: 12, yearly: 120 },
     period: "/month",
-    description: "Power users who need advanced organization",
+    description: "For users who need more AI power",
     icon: Rocket,
     color: "from-blue-500 to-cyan-500",
     borderColor: "border-blue-200",
     features: [
-      "✅ Everything in Free, plus:",
-      "Unlimited bookmarks, categories, tags & folders",
-      "All views (Kanban, Timeline, Compact, Hierarchy)",
-      "Advanced search with filters",
-      "AI Summaries (50/month)",
-      "10 active productivity tools",
-      "Reading progress & highlights",
-      "Basic analytics dashboard",
-      "Priority email support",
-      "Ad-free experience"
+      "Unlimited bookmarks",
+      "1 company workspace",
+      "50 AI summaries/month",
+      "30 AI brainstorms/month",
+      "100 Oracle AI commands/month",
+      "Unlimited Mind Maps",
+      "Unlimited Vision Boards",
+      "10 exports/month",
+      "5 E-Signatures/month",
+      "Priority support"
     ],
-    cta: "Start Free Trial",
+    notIncluded: [],
+    cta: "Upgrade to Pro Plus",
     popular: false,
     trial: true
   },
   {
-    id: "premium",
-    name: "Professional",
-    tagline: "PREMIUM TIER",
-    price: { monthly: 17, yearly: 170 },
+    id: "power_user",
+    name: "Power User",
+    tagline: "BEST VALUE",
+    price: { monthly: 24, yearly: 240 },
     period: "/month",
-    description: "Professionals & content creators",
+    description: "Unlimited everything for power users",
     icon: Crown,
     color: "from-lime-500 via-yellow-400 to-orange-500",
     borderColor: "border-lime-400",
     features: [
-      "✅ Everything in Ultra, plus:",
-      "Unlimited AI Summaries",
-      "AI LinkPilot (bulk upload 100 URLs, validation)",
-      "Oracle AI Assistant (chat with bookmarks)",
-      "Unlimited productivity tools",
-      "DNA Profile (personalized insights)",
-      "Goals & goal tracking with custom logos",
-      "Time Capsule (automatic snapshots)",
-      "Advanced analytics & reports",
-      "Marketplace access (templates & bundles)",
-      "Custom category logos",
-      "Price tracker",
-      "Export to all formats",
-      "Priority support (24hr response)"
+      "✅ Everything in Pro Plus, plus:",
+      "5 company workspaces",
+      "Unlimited AI summaries",
+      "Unlimited AI brainstorms",
+      "Unlimited Oracle AI commands",
+      "Unlimited E-Signatures",
+      "White-label exports",
+      "API access",
+      "VIP support",
+      "Early access to new features"
     ],
-    cta: "Start Free Trial",
+    notIncluded: [],
+    cta: "Upgrade to Power User",
     popular: true,
     trial: true
   },
   {
-    id: "god",
-    name: "Enterprise",
-    tagline: "GOD TIER",
-    price: { monthly: 35, yearly: 350 },
+    id: "team",
+    name: "Team",
+    tagline: "TEAM PLAN",
+    price: { monthly: 49, yearly: 490 },
     period: "/month",
-    description: "Teams & power users",
+    description: "For teams that collaborate together",
     icon: Users,
     color: "from-purple-500 to-pink-500",
     borderColor: "border-purple-200",
     features: [
-      "✅ Everything in Premium, plus:",
-      "Team collaboration (up to 5 members)",
-      "Company multi-tenant support",
-      "Advanced sharing & permissions",
-      "Team notifications & mentions",
-      "AI LinkPilot Unlimited (500 URLs)",
-      "Version monitoring & tracking",
-      "Advanced API access",
-      "White-label options",
-      "Custom integrations",
-      "Dedicated account manager",
-      "Same-day support response",
-      "Training & onboarding sessions"
+      "✅ Everything in Power User, plus:",
+      "25 company workspaces",
+      "Team collaboration",
+      "Admin controls & permissions",
+      "Advanced analytics",
+      "Team sharing & mentions",
+      "Dedicated support",
+      "Priority feature requests"
     ],
-    cta: "Start Free Trial",
+    notIncluded: [],
+    cta: "Upgrade to Team",
     popular: false,
     trial: true
-  },
-  {
-    id: "lifetime",
-    name: "Forever Access",
-    tagline: "LIFETIME",
-    price: { monthly: 249, yearly: 249 },
-    period: "one-time",
-    description: "Long-term users who want maximum value",
-    icon: Infinity,
-    color: "from-amber-500 to-orange-600",
-    borderColor: "border-amber-300",
-    features: [
-      "✅ Everything in Premium tier",
-      "All future updates included",
-      "Lifetime access - never pay again",
-      "Lifetime priority support",
-      "Early access to new features",
-      "Priority feature request voting",
-      "Grandfathered pricing protection",
-      "One-time payment, no subscriptions",
-      "Team features (+$99 one-time for 5 members)"
-    ],
-    cta: "Get Lifetime Access",
-    popular: false,
-    trial: false,
-    savings: "Save over $2,000 vs 10 years of Premium"
   }
 ]
 
 const faqs = [
   {
     question: "Can I try before I buy?",
-    answer: "Yes! Every user gets 3 free credits per premium feature to test before committing. This lets you fully experience AI Summaries, LinkPilot, Oracle AI, and more before upgrading. You can also use our Free tier forever with limited features."
+    answer: "Yes! Every user gets 3 free credits per premium feature to test before committing. This lets you fully experience AI Summaries, Oracle AI, Mind Maps, and more before upgrading. You can also use our Free (Pro) tier forever with limited features."
   },
   {
     question: "What's your refund policy?",
@@ -181,12 +152,12 @@ const faqs = [
     answer: "Yes! You can change your plan at any time. When upgrading, you'll be prorated for the remainder of your billing cycle. When downgrading, the change takes effect at the start of your next billing period."
   },
   {
-    question: "How does team pricing work?",
-    answer: "The Enterprise (God Tier) plan includes up to 5 team members. For the Lifetime plan, team features are available as a one-time $99 add-on. Need more than 5 members? Contact us for custom enterprise pricing."
+    question: "What are company workspaces?",
+    answer: "Company workspaces let you organize bookmarks by project, client, or team. Free users get 1 workspace, Pro Plus gets 1, Power Users get 5, and Team plans get 25 workspaces for maximum organization."
   },
   {
     question: "What payment methods do you accept?",
-    answer: "We accept all major credit cards (Visa, Mastercard, American Express), PayPal, Apple Pay, and Google Pay. All payments are processed securely through Stripe."
+    answer: "We accept all major credit cards (Visa, Mastercard, American Express), PayPal, Apple Pay, and Google Pay. All payments are processed securely through Lemon Squeezy."
   },
   {
     question: "Is my data secure?",
@@ -194,46 +165,46 @@ const faqs = [
   },
   {
     question: "What happens to my bookmarks if I cancel?",
-    answer: "Your bookmarks are always yours. You can export all your data at any time. If you cancel a paid plan, you'll be downgraded to the Free tier and retain access to your first 100 bookmarks."
+    answer: "Your bookmarks are always yours. You can export all your data at any time. If you cancel a paid plan, you'll be downgraded to the Free tier and retain access to your first 50 bookmarks."
   },
   {
-    question: "Do you offer discounts for students or non-profits?",
-    answer: "Yes! We offer 50% off for students and non-profit organizations. Contact us with proof of eligibility to receive your discount code."
+    question: "What are E-Signatures used for?",
+    answer: "E-Signatures let you digitally sign and request signatures on documents directly within BookmarkAI Hub. Perfect for contracts, agreements, and approvals. Free users don't have access, Pro Plus gets 5/month, and Power User & Team plans get unlimited signatures."
   }
 ]
 
 const comparisonFeatures = [
-  { name: "Bookmarks", free: "100", ultra: "Unlimited", premium: "Unlimited", god: "Unlimited", lifetime: "Unlimited" },
-  { name: "Categories & Tags", free: "5 / 3", ultra: "Unlimited", premium: "Unlimited", god: "Unlimited", lifetime: "Unlimited" },
-  { name: "View Modes", free: "2 Basic", ultra: "All Views", premium: "All Views", god: "All Views", lifetime: "All Views" },
-  { name: "AI Summaries", free: "—", ultra: "50/month", premium: "Unlimited", god: "Unlimited", lifetime: "Unlimited" },
-  { name: "AI LinkPilot", free: "—", ultra: "—", premium: "100 URLs", god: "500 URLs", lifetime: "100 URLs" },
-  { name: "Oracle AI Assistant", free: "—", ultra: "—", premium: "✓", god: "✓", lifetime: "✓" },
-  { name: "Productivity Tools", free: "1", ultra: "10", premium: "Unlimited", god: "Unlimited", lifetime: "Unlimited" },
-  { name: "DNA Profile", free: "—", ultra: "—", premium: "✓", god: "✓", lifetime: "✓" },
-  { name: "Analytics", free: "—", ultra: "Basic", premium: "Advanced", god: "Advanced", lifetime: "Advanced" },
-  { name: "Team Members", free: "—", ultra: "—", premium: "—", god: "5 members", lifetime: "+$99 add-on" },
-  { name: "API Access", free: "—", ultra: "—", premium: "—", god: "Advanced", lifetime: "—" },
-  { name: "Support", free: "Basic", ultra: "Priority Email", premium: "24hr Response", god: "Same-day", lifetime: "Priority" },
+  { name: "Bookmarks", free: "50", proPlus: "Unlimited", powerUser: "Unlimited", team: "Unlimited" },
+  { name: "Company Workspaces", free: "1", proPlus: "1", powerUser: "5", team: "25" },
+  { name: "AI Summaries", free: "3/month", proPlus: "50/month", powerUser: "Unlimited", team: "Unlimited" },
+  { name: "AI Brainstorm", free: "2/month", proPlus: "30/month", powerUser: "Unlimited", team: "Unlimited" },
+  { name: "Oracle AI Commands", free: "5/month", proPlus: "100/month", powerUser: "Unlimited", team: "Unlimited" },
+  { name: "Mind Maps", free: "3/month", proPlus: "Unlimited", powerUser: "Unlimited", team: "Unlimited" },
+  { name: "Vision Boards", free: "3/month", proPlus: "Unlimited", powerUser: "Unlimited", team: "Unlimited" },
+  { name: "Exports", free: "1/month", proPlus: "10/month", powerUser: "Unlimited", team: "Unlimited" },
+  { name: "E-Signatures", free: "—", proPlus: "5/month", powerUser: "Unlimited", team: "Unlimited" },
+  { name: "White-label Exports", free: "—", proPlus: "—", powerUser: "✓", team: "✓" },
+  { name: "API Access", free: "—", proPlus: "—", powerUser: "✓", team: "✓" },
+  { name: "Team Collaboration", free: "—", proPlus: "—", powerUser: "—", team: "✓" },
+  { name: "Admin Controls", free: "—", proPlus: "—", powerUser: "—", team: "✓" },
+  { name: "Support", free: "Basic", proPlus: "Priority", powerUser: "VIP", team: "Dedicated" },
 ]
 
 export function PricingPage() {
   const [isYearly, setIsYearly] = useState(false)
 
   const getPrice = (plan: typeof plans[0]) => {
-    if (plan.id === "lifetime") return plan.price.monthly
     if (plan.id === "free") return 0
-    return isYearly ? plan.price.yearly : plan.price.monthly
+    return isYearly ? Math.round(plan.price.yearly / 12) : plan.price.monthly
   }
 
   const getPeriod = (plan: typeof plans[0]) => {
-    if (plan.id === "lifetime") return "one-time"
     if (plan.id === "free") return "forever free"
-    return isYearly ? "/year" : "/month"
+    return isYearly ? "/month (billed yearly)" : "/month"
   }
 
   const getSavings = (plan: typeof plans[0]) => {
-    if (plan.id === "free" || plan.id === "lifetime") return null
+    if (plan.id === "free") return null
     const monthlyCost = plan.price.monthly * 12
     const yearlyCost = plan.price.yearly
     const savings = Math.round(((monthlyCost - yearlyCost) / monthlyCost) * 100)
@@ -312,7 +283,7 @@ export function PricingPage() {
       {/* Pricing Cards */}
       <section className="pb-24">
         <div className="container">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {plans.map((plan, index) => {
               const Icon = plan.icon
               return (
@@ -334,7 +305,7 @@ export function PricingPage() {
                       <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-10">
                         <Badge className="bg-gradient-to-r from-lime-500 via-yellow-400 to-orange-500 text-white px-4 py-1.5 text-sm font-bold shadow-lg">
                           <Star className="h-3.5 w-3.5 mr-1.5 fill-white" />
-                          Most Popular
+                          Best Value
                         </Badge>
                       </div>
                     )}
@@ -362,14 +333,11 @@ export function PricingPage() {
                           Save {getSavings(plan)}%
                         </Badge>
                       )}
-                      {plan.savings && (
-                        <p className="mt-2 text-xs text-amber-600 font-medium">{plan.savings}</p>
-                      )}
                       <CardDescription className="mt-3 text-sm">{plan.description}</CardDescription>
                     </CardHeader>
 
                     <CardContent className="flex-1 flex flex-col">
-                      <ul className="space-y-2.5 mb-6 flex-1">
+                      <ul className="space-y-2.5 mb-4 flex-1">
                         {plan.features.map((feature, i) => (
                           <li key={i} className="flex items-start gap-2">
                             {feature.startsWith("✅") ? (
@@ -382,17 +350,21 @@ export function PricingPage() {
                             )}
                           </li>
                         ))}
+                        {plan.notIncluded && plan.notIncluded.map((feature, i) => (
+                          <li key={`not-${i}`} className="flex items-start gap-2">
+                            <X className="h-4 w-4 text-red-400 flex-shrink-0 mt-0.5" />
+                            <span className="text-sm text-muted-foreground">{feature}</span>
+                          </li>
+                        ))}
                       </ul>
 
                       <Button
                         className={`w-full font-semibold ${
                           plan.popular
                             ? 'bg-gradient-to-r from-lime-500 via-yellow-400 to-orange-500 hover:from-lime-600 hover:via-yellow-500 hover:to-orange-600 text-white shadow-lg'
-                            : plan.id === "lifetime"
-                            ? 'bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white'
                             : ''
                         }`}
-                        variant={plan.popular || plan.id === "lifetime" ? "default" : "outline"}
+                        variant={plan.popular ? "default" : "outline"}
                         asChild
                       >
                         <a href="https://app.bookmarkaihub.com/auth/signup">
@@ -466,20 +438,19 @@ export function PricingPage() {
           </motion.div>
 
           <div className="overflow-x-auto">
-            <table className="w-full max-w-6xl mx-auto border-collapse">
+            <table className="w-full max-w-5xl mx-auto border-collapse">
               <thead>
                 <tr className="border-b-2">
                   <th className="text-left py-4 px-4 font-semibold">Feature</th>
-                  <th className="text-center py-4 px-4 font-semibold">Starter</th>
-                  <th className="text-center py-4 px-4 font-semibold">Pro</th>
+                  <th className="text-center py-4 px-4 font-semibold">Pro (Free)</th>
+                  <th className="text-center py-4 px-4 font-semibold">Pro Plus</th>
                   <th className="text-center py-4 px-4 font-semibold bg-lime-50 border-x-2 border-lime-200">
                     <div className="flex flex-col items-center">
-                      <Badge className="mb-1 bg-lime-500 text-white text-xs">Popular</Badge>
-                      Professional
+                      <Badge className="mb-1 bg-lime-500 text-white text-xs">Best Value</Badge>
+                      Power User
                     </div>
                   </th>
-                  <th className="text-center py-4 px-4 font-semibold">Enterprise</th>
-                  <th className="text-center py-4 px-4 font-semibold">Lifetime</th>
+                  <th className="text-center py-4 px-4 font-semibold">Team</th>
                 </tr>
               </thead>
               <tbody>
@@ -487,19 +458,17 @@ export function PricingPage() {
                   <tr key={index} className="border-b hover:bg-muted/30 transition-colors">
                     <td className="py-3 px-4 font-medium">{feature.name}</td>
                     <td className="text-center py-3 px-4 text-muted-foreground">{feature.free}</td>
-                    <td className="text-center py-3 px-4 text-muted-foreground">{feature.ultra}</td>
-                    <td className="text-center py-3 px-4 bg-lime-50/50 border-x border-lime-100 font-medium">{feature.premium}</td>
-                    <td className="text-center py-3 px-4 text-muted-foreground">{feature.god}</td>
-                    <td className="text-center py-3 px-4 text-muted-foreground">{feature.lifetime}</td>
+                    <td className="text-center py-3 px-4 text-muted-foreground">{feature.proPlus}</td>
+                    <td className="text-center py-3 px-4 bg-lime-50/50 border-x border-lime-100 font-medium">{feature.powerUser}</td>
+                    <td className="text-center py-3 px-4 text-muted-foreground">{feature.team}</td>
                   </tr>
                 ))}
                 <tr className="border-b-2">
                   <td className="py-4 px-4 font-semibold">Price</td>
                   <td className="text-center py-4 px-4 font-bold">Free</td>
-                  <td className="text-center py-4 px-4 font-bold">${isYearly ? '80/yr' : '8/mo'}</td>
-                  <td className="text-center py-4 px-4 bg-lime-50/50 border-x border-lime-100 font-bold text-lime-700">${isYearly ? '170/yr' : '17/mo'}</td>
-                  <td className="text-center py-4 px-4 font-bold">${isYearly ? '350/yr' : '35/mo'}</td>
-                  <td className="text-center py-4 px-4 font-bold">$249 once</td>
+                  <td className="text-center py-4 px-4 font-bold">${isYearly ? '10/mo' : '12/mo'}</td>
+                  <td className="text-center py-4 px-4 bg-lime-50/50 border-x border-lime-100 font-bold text-lime-700">${isYearly ? '20/mo' : '24/mo'}</td>
+                  <td className="text-center py-4 px-4 font-bold">${isYearly ? '41/mo' : '49/mo'}</td>
                 </tr>
               </tbody>
             </table>
@@ -507,22 +476,22 @@ export function PricingPage() {
         </div>
       </section>
 
-      {/* Enterprise CTA */}
+      {/* Enterprise/Custom CTA */}
       <section className="py-16 bg-gradient-to-r from-purple-900 via-purple-800 to-indigo-900">
         <div className="container">
           <div className="max-w-3xl mx-auto text-center text-white">
             <Users className="h-12 w-12 mx-auto mb-4 text-purple-300" />
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Need More Than 5 Team Members?
+              Need a Custom Solution?
             </h2>
             <p className="text-lg text-purple-200 mb-8">
-              Contact us for custom enterprise pricing with unlimited team members,
-              dedicated support, and custom integrations.
+              Contact us for custom enterprise pricing with unlimited workspaces,
+              dedicated support, SSO, and custom integrations.
             </p>
             <Button size="lg" className="bg-white text-purple-900 hover:bg-purple-50" asChild>
               <a href="mailto:enterprise@bookmarkaihub.com">
                 <Mail className="h-5 w-5 mr-2" />
-                Contact Enterprise Sales
+                Contact Sales
               </a>
             </Button>
           </div>
@@ -605,4 +574,3 @@ export function PricingPage() {
     </div>
   )
 }
-
