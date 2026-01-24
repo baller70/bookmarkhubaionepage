@@ -6,16 +6,17 @@ import { Mail, ArrowRight, ExternalLink } from "lucide-react"
 const footerLinks = {
   Product: [
     { label: "Features", href: "#features" },
-    { label: "Testimonials", href: "#testimonials" },
+    { label: "Pricing", href: "/pricing" },
     { label: "FAQ", href: "#faq" },
   ],
   Legal: [
-    { label: "Privacy Policy", href: "#" },
-    { label: "Terms of Service", href: "#" },
+    { label: "Terms of Service", href: "/terms" },
+    { label: "Privacy Policy", href: "/privacy" },
+    { label: "Refund Policy", href: "/refund" },
   ],
   Help: [
-    { label: "Contact Us", href: "#" },
-    { label: "Support", href: "#" },
+    { label: "Contact Us", href: "mailto:hello@bookmarkaihub.com" },
+    { label: "Support", href: "mailto:support@bookmarkaihub.com" },
   ],
 }
 

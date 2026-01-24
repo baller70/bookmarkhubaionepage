@@ -170,11 +170,11 @@ const plans = [
 const faqs = [
   {
     question: "Can I try before I buy?",
-    answer: "Absolutely! All paid plans come with a 14-day free trial. No credit card required to start. You can also use our Free tier forever with limited features."
+    answer: "Yes! Every user gets 3 free credits per premium feature to test before committing. This lets you fully experience AI Summaries, LinkPilot, Oracle AI, and more before upgrading. You can also use our Free tier forever with limited features."
   },
   {
     question: "What's your refund policy?",
-    answer: "We offer a 30-day money-back guarantee on all paid plans. If you're not satisfied for any reason, contact us within 30 days for a full refund, no questions asked."
+    answer: "Because we offer 3 free credits per feature to test before purchasing, all sales are final. We do not offer refunds, but we're happy to help resolve any issues you experience with the service."
   },
   {
     question: "Can I upgrade or downgrade at any time?",
@@ -403,7 +403,7 @@ export function PricingPage() {
 
                       {plan.trial && (
                         <p className="text-xs text-center text-muted-foreground mt-2">
-                          14-day free trial • No credit card required
+                          3 free credits per feature to try
                         </p>
                       )}
                     </CardContent>
@@ -428,8 +428,8 @@ export function PricingPage() {
         <div className="container">
           <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16">
             <div className="flex items-center gap-2 text-muted-foreground">
-              <Shield className="h-5 w-5 text-green-500" />
-              <span className="text-sm font-medium">30-day money-back guarantee</span>
+              <Gift className="h-5 w-5 text-green-500" />
+              <span className="text-sm font-medium">3 free credits per feature</span>
             </div>
             <div className="flex items-center gap-2 text-muted-foreground">
               <Clock className="h-5 w-5 text-blue-500" />
@@ -437,7 +437,7 @@ export function PricingPage() {
             </div>
             <div className="flex items-center gap-2 text-muted-foreground">
               <Lock className="h-5 w-5 text-purple-500" />
-              <span className="text-sm font-medium">Secure payment</span>
+              <span className="text-sm font-medium">Secure payment via Lemon Squeezy</span>
             </div>
             <div className="flex items-center gap-2 text-muted-foreground">
               <CreditCard className="h-5 w-5 text-orange-500" />
@@ -597,7 +597,7 @@ export function PricingPage() {
               </Button>
             </div>
             <p className="mt-6 text-sm text-white/80">
-              🔒 30-day money-back guarantee • Cancel anytime
+              🎁 3 free credits per feature • Cancel anytime
             </p>
           </div>
         </div>
